@@ -1,0 +1,148 @@
+---
+import { estateDetails } from "../data/metrics";
+
+/**
+ * Static SVG visuals for estate scale and delivery compression.
+ * No animated counters — restrained, executive, print-safe.
+ */
+
+// Estate series normalized within group (repos as ceiling for structure counts)
+const estateBars = [
+  { label: "Repositories", value: estateDetails.repositories, display: "530" },
+  {
+    label: "Component repos",
+    value: estateDetails.componentRepositoriesApprox,
+    display: "~500",
+  },
+  { label: "Priority services", value: estateDetails.priorityServices, display: "40" },
+  { label: "APIs", value: estateDetails.apis, display: "83" },
+  { label: "Customer apps", value: estateDetails.customerFacingApps, display: "11" },
+  { label: "Client contexts", value: estateDetails.clientContexts, display: "72" },
+];
+const estateMax = Math.max(...estateBars.map((b) => b.value));
+
+// Delivery compression — ordinal scale for “before effort” (higher = worse)
+const compression = [
+  {
+    id: "client-prep",
+    label: "Client architecture prep",
+    beforeLabel: "~1 week",
+    afterLabel: "hours",
+    before: 100,
+    after: 12,
+  },
+  {
+    id: "onboarding",
+    label: "Role-focused onboarding",
+    beforeLabel: "~2 weeks",
+    afterLabel: "1 day",
+    before: 100,
+    after: 10,
+  },
+  {
+    id: "refresh",
+    label: "Architecture refresh cycle",
+    beforeLabel: "annual manual",
+    afterLabel: "~4 hours",
+    before: 100,
+    after: 8,
+  },
+  {
+    id: "install",
+    label: "Retail installation",
+    beforeLabel: "several months",
+    afterLabel: "~1 hour",
+    before: 100,
+    after: 4,
+  },
+];
+---
+
+<div class="metric-visuals" data-reveal>
+  <div class="metric-visual-card">
+    <div class="metric-visual-card__head">
+      <p class="section-label">Estate scale</p>
+      <h3 class="metric-visual-card__title">Healthcare SaaS application estate</h3>
+      <p class="metric-visual-card__note">
+        Related figures from one estate model — not independent claims.
+      </p>
+    </div>
+    <figure class="chart" aria-labelledby="estate-chart-title estate-chart-desc">
+      <figcaption id="estate-chart-title" class="visually-hidden">
+        Relative scale of estate components
+      </figcaption>
+      <p id="estate-chart-desc" class="visually-hidden">
+        Bar chart comparing repositories, component repositories, priority services, APIs,
+        customer-facing applications, and client contexts within the healthcare SaaS estate.
+      </p>
+      <ul class="bar-chart" role="list">
+        {
+          estateBars.map((bar) => {
+            const pct = Math.max(6, Math.round((bar.value / estateMax) * 100));
+            return (
+              <li class="bar-chart__row">
+                <span class="bar-chart__label">{bar.label}</span>
+                <span class="bar-chart__track" aria-hidden="true">
+                  <span class="bar-chart__fill" style={`width: ${pct}%`} />
+                </span>
+                <span class="bar-chart__value">{bar.display}</span>
+              </li>
+            );
+          })
+        }
+      </ul>
+      <p class="chart-caption">
+        Also assessed: approximately {estateDetails.endpointsApprox.toLocaleString()} endpoints ·
+        {estateDetails.teamsInfluenced} teams influenced
+      </p>
+    </figure>
+  </div>
+
+  <div class="metric-visual-card">
+    <div class="metric-visual-card__head">
+      <p class="section-label">Delivery compression</p>
+      <h3 class="metric-visual-card__title">Time-to-outcome improvements</h3>
+      <p class="metric-visual-card__note">
+        Before → after effort illustrated comparatively (approximate, verify before publication).
+      </p>
+    </div>
+    <figure class="chart" aria-labelledby="compress-chart-title compress-chart-desc">
+      <figcaption id="compress-chart-title" class="visually-hidden">
+        Before and after delivery effort comparison
+      </figcaption>
+      <p id="compress-chart-desc" class="visually-hidden">
+        Comparison chart showing reduced effort for client architecture preparation, onboarding,
+        architecture refresh, and retail installation.
+      </p>
+      <ul class="compare-chart" role="list">
+        {
+          compression.map((row) => (
+            <li class="compare-chart__row">
+              <div class="compare-chart__label">{row.label}</div>
+              <div class="compare-chart__bars" aria-hidden="true">
+                <div class="compare-chart__pair">
+                  <span class="compare-chart__tag">Before</span>
+                  <span class="compare-chart__track compare-chart__track--before">
+                    <span class="compare-chart__fill" style={`width: ${row.before}%`} />
+                  </span>
+                  <span class="compare-chart__num">{row.beforeLabel}</span>
+                </div>
+                <div class="compare-chart__pair">
+                  <span class="compare-chart__tag compare-chart__tag--after">After</span>
+                  <span class="compare-chart__track compare-chart__track--after">
+                    <span class="compare-chart__fill" style={`width: ${row.after}%`} />
+                  </span>
+                  <span class="compare-chart__num">{row.afterLabel}</span>
+                </div>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+      <p class="chart-caption">
+        Bars encode relative effort, not calendar-perfect units. Exact definitions belong in
+        interview verification notes.
+      </p>
+    </figure>
+  </div>
+</div>

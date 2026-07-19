@@ -34,3 +34,7 @@ backups/
 # temporary
 tmp/
 temp/
+
+# source photo kept local; published asset is public/images/
+moher_clipped_smiling.png
+

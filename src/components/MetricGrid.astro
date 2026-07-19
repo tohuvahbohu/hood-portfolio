@@ -1,5 +1,6 @@
 ---
 import { getHomepageMetrics, healthcareEstateNarrative } from "../data/metrics";
+import MetricVisuals from "./MetricVisuals.astro";
 const metrics = getHomepageMetrics();
 ---
 
@@ -11,7 +12,10 @@ const metrics = getHomepageMetrics();
       High-signal results from enterprise estate work, client integration productization, and
       deployment transformation. Figures are provided for verification before publication.
     </p>
-    <div class="metric-grid">
+
+    <MetricVisuals />
+
+    <div class="metric-grid metric-grid--compact">
       {
         metrics.map((m) => (
           <article class="metric-card" data-reveal>

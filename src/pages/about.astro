@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Portrait from "../components/Portrait.astro";
 import { profile } from "../data/profile";
 ---
 
@@ -9,10 +10,13 @@ import { profile } from "../data/profile";
   canonicalPath="/about/"
 >
   <header class="page-header">
-    <div class="container">
-      <p class="eyebrow">About</p>
-      <h1>About {profile.name}</h1>
-      <p>{profile.headline}</p>
+    <div class="container about-header">
+      <div class="about-header__copy">
+        <p class="eyebrow">About</p>
+        <h1>About {profile.name}</h1>
+        <p>{profile.headline}</p>
+      </div>
+      <Portrait size="lg" shape="soft" class="about-header__photo" priority />
     </div>
   </header>
 

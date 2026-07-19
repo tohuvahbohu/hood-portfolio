@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Portrait from "../components/Portrait.astro";
 import { profile, getEmailParts } from "../data/profile";
 
 const emailParts = getEmailParts();
@@ -20,7 +21,16 @@ const emailParts = getEmailParts();
 
   <section class="section">
     <div class="container">
-      <div class="contact-panel" data-reveal>
+      <div class="contact-panel contact-panel--with-photo" data-reveal>
+        <div class="contact-panel__identity">
+          <Portrait size="md" shape="circle" />
+          <div>
+            <p class="contact-panel__name">{profile.name}</p>
+            <p class="muted" style="margin:0">
+              {profile.location} · {profile.workMode}
+            </p>
+          </div>
+        </div>
         <div>
           <p class="section-label">Direct</p>
           <p class="muted">

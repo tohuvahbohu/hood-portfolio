@@ -6,6 +6,16 @@
 export function initNavigation(): void {
   const toggle = document.querySelector<HTMLButtonElement>("[data-nav-toggle]");
   const nav = document.querySelector<HTMLElement>("[data-nav-list]");
+  const header = document.querySelector<HTMLElement>("[data-site-header]");
+
+  if (header) {
+    const onScroll = () => {
+      header.classList.toggle("is-scrolled", window.scrollY > 24);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+  }
+
   if (!toggle || !nav) return;
 
   const setOpen = (open: boolean) => {

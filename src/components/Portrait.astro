@@ -1,0 +1,40 @@
+---
+import { profile } from "../data/profile";
+
+interface Props {
+  /** Visual size token */
+  size?: "xs" | "sm" | "md" | "lg" | "xl";
+  /** Shape: circle for chrome; soft square for editorial hero */
+  shape?: "circle" | "soft";
+  /** Extra class names */
+  class?: string;
+  /** Decorative only (header branding) — still keep alt empty only if pure decoration with adjacent name */
+  decorative?: boolean;
+  priority?: boolean;
+  id?: string;
+}
+
+const {
+  size = "md",
+  shape = "circle",
+  class: className = "",
+  decorative = false,
+  priority = false,
+  id,
+} = Astro.props;
+
+const { photo, name } = profile;
+const alt = decorative ? "" : photo.alt || `Portrait of ${name}`;
+---
+
+<span class:list={["portrait", `portrait--${size}`, `portrait--${shape}`, className]} id={id}>
+  <img
+    src={photo.src}
+    alt={alt}
+    width={photo.width}
+    height={photo.height}
+    loading={priority ? "eager" : "lazy"}
+    decoding="async"
+    fetchpriority={priority ? "high" : undefined}
+  />
+</span>

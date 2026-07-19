@@ -1,5 +1,6 @@
 ---
 import { profile } from "../data/profile";
+import Portrait from "./Portrait.astro";
 const { hero } = profile;
 ---
 
@@ -22,14 +23,18 @@ const { hero } = profile;
         {profile.showAvailability && <li>{profile.availabilityLabel}</li>}
       </ul>
     </div>
-    <aside class="metric-card" data-reveal aria-label="Positioning">
-      <p class="section-label">Positioning</p>
-      <p class="metric-card__value" style="font-size:1.25rem;line-height:1.35">
-        {profile.headline}
-      </p>
-      <p class="metric-card__label">
-        Enterprise architecture · SaaS modernization · .NET / Azure · AI-enabled SDLC
-      </p>
+
+    <aside class="hero__identity" aria-label="Profile">
+      <div class="hero__portrait-frame">
+        <Portrait size="xl" shape="soft" priority class="hero__portrait" />
+      </div>
+      <div class="hero__identity-copy">
+        <p class="hero__identity-name">{profile.name}</p>
+        <p class="hero__identity-role">Principal Software Architect</p>
+        <p class="hero__identity-focus">
+          Enterprise architecture · SaaS modernization · .NET / Azure · AI-enabled SDLC
+        </p>
+      </div>
     </aside>
   </div>
 </section>

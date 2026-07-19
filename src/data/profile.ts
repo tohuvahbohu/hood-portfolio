@@ -111,6 +111,17 @@ export const profile = {
     ],
   },
 
+  /**
+   * Portrait used across hero, header, about, and contact.
+   * Prefer the optimized public asset; keep source files out of git if desired.
+   */
+  photo: {
+    src: "/images/michael-andrew-hood.png",
+    alt: "Portrait of Michael Andrew Hood",
+    width: 640,
+    height: 800,
+  },
+
   social: {
     ogImage: "/og-image.svg",
     twitterHandle: "",

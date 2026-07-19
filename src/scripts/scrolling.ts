@@ -113,24 +113,46 @@ function initStickyStudies(): ScrollTrigger[] {
 function initHeroTransition(): void {
   if (prefersReducedMotion() || !isDesktop()) return;
   const hero = document.querySelector<HTMLElement>(".hero");
-  const outcomes = document.querySelector<HTMLElement>("#outcomes");
-  if (!hero || !outcomes) return;
+  if (!hero) return;
 
-  gsap.fromTo(
-    hero.querySelectorAll(".hero__content > *"),
-    { y: 0, opacity: 1 },
-    {
-      y: -24,
-      opacity: 0.15,
-      ease: "none",
-      scrollTrigger: {
-        trigger: hero,
-        start: "top top",
-        end: "bottom top",
-        scrub: true,
+  // Subtle fade only — avoid aggressive content washout that hurts scannability
+  const content = hero.querySelectorAll(".hero__content > *");
+  if (content.length) {
+    gsap.fromTo(
+      content,
+      { y: 0, opacity: 1 },
+      {
+        y: -12,
+        opacity: 0.55,
+        ease: "none",
+        scrollTrigger: {
+          trigger: hero,
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
       },
-    },
-  );
+    );
+  }
+
+  const identity = hero.querySelector<HTMLElement>(".hero__identity");
+  if (identity) {
+    gsap.fromTo(
+      identity,
+      { y: 0, opacity: 1 },
+      {
+        y: -8,
+        opacity: 0.7,
+        ease: "none",
+        scrollTrigger: {
+          trigger: hero,
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
+      },
+    );
+  }
 }
 
 function handleAnchorClicks(lenis: Lenis | null): void {
