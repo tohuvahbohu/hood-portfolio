@@ -1,4 +1,6 @@
 ---
+import DiagramBoxLabel from "./DiagramBoxLabel.astro";
+
 const steps = [
   "Guest request",
   "Commerce API",
@@ -11,47 +13,44 @@ const steps = [
   "Customer notification",
   "Reporting & ops support",
 ];
+
+const boxW = 136;
+const boxH = 62;
 ---
 
 <figure class="diagram">
-  <svg viewBox="0 0 760 300" role="img" aria-labelledby="commerce-title commerce-desc">
+  <svg viewBox="0 0 760 320" role="img" aria-labelledby="commerce-title commerce-desc">
     <title id="commerce-title">Transactional commerce flow</title>
     <desc id="commerce-desc">
       Guest request flows through commerce API, validation, transaction boundary, payment
       authorization, data update, event publication, downstream systems, notification, and
       reporting.
     </desc>
-    <rect width="760" height="300" fill="#101010" rx="8"></rect>
+    <rect width="760" height="320" fill="#101010" rx="8"></rect>
     {
       steps.map((label, i) => {
         const col = i % 5;
         const row = Math.floor(i / 5);
         const x = 20 + col * 148;
-        const y = 40 + row * 120;
+        const y = 40 + row * 130;
         return (
           <g>
             <rect
               x={x}
               y={y}
-              width="136"
-              height="56"
+              width={boxW}
+              height={boxH}
               rx="6"
               fill="#141414"
               stroke="#6ea8a0"
               stroke-opacity="0.45"
             />
-            <text
-              x={x + 68}
-              y={y + 32}
-              text-anchor="middle"
-              fill="#e8e8e4"
-              font-size="11"
-              font-family="ui-monospace, monospace"
-            >
-              {label}
-            </text>
+            <DiagramBoxLabel x={x} y={y} width={boxW} height={boxH} label={label} fontSize={11} />
             {col < 4 && i < steps.length - 1 && row === Math.floor((i + 1) / 5) && (
-              <path d={`M ${x + 136} ${y + 28} L ${x + 148} ${y + 28}`} stroke="#6ea8a0" />
+              <path
+                d={`M ${x + boxW} ${y + boxH / 2} L ${x + 148} ${y + boxH / 2}`}
+                stroke="#6ea8a0"
+              />
             )}
           </g>
         );

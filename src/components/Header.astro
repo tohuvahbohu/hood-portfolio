@@ -9,7 +9,7 @@ import Portrait from "./Portrait.astro";
     <a class="site-logo" href="/" aria-label={`${profile.name} — home`}>
       <Portrait size="xs" shape="circle" decorative class="site-logo__photo" />
       <span class="site-logo__text">
-        {profile.name.split(" ").slice(0, 2).join(" ")}
+        <span class="site-logo__name">{profile.name}</span>
         <span class="site-logo__muted">Architecture</span>
       </span>
     </a>

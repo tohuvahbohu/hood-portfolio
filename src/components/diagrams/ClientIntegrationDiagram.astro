@@ -1,4 +1,6 @@
 ---
+import DiagramBoxLabel from "./DiagramBoxLabel.astro";
+
 const steps = [
   "Client system",
   "Secure transfer / integration boundary",
@@ -9,61 +11,44 @@ const steps = [
   "Event / notification path",
   "Operational response",
 ];
+
+const boxW = 160;
+const boxH = 78;
 ---
 
 <figure class="diagram">
-  <svg viewBox="0 0 760 360" role="img" aria-labelledby="client-int-title client-int-desc">
+  <svg viewBox="0 0 760 380" role="img" aria-labelledby="client-int-title client-int-desc">
     <title id="client-int-title">Client integration sequence</title>
     <desc id="client-int-desc">
       Sanitized sequence from client system through secure boundary, SaaS integration layer, core
       product API, workflow service, data store, event path, and operational response.
     </desc>
-    <rect width="760" height="360" fill="#101010" rx="8"></rect>
+    <rect width="760" height="380" fill="#101010" rx="8"></rect>
     {
       steps.map((label, i) => {
         const col = i % 4;
         const row = Math.floor(i / 4);
         const x = 30 + col * 185;
-        const y = 40 + row * 150;
+        const y = 40 + row * 160;
         return (
           <g>
             <rect
               x={x}
               y={y}
-              width="160"
-              height="70"
+              width={boxW}
+              height={boxH}
               rx="6"
               fill="#141414"
               stroke="#6ea8a0"
               stroke-opacity="0.5"
             />
-            <text
-              x={x + 80}
-              y={y + 40}
-              text-anchor="middle"
-              fill="#e8e8e4"
-              font-family="ui-monospace, monospace"
-              font-size="11"
-            >
-              {label.length > 28 ? (
-                <>
-                  <tspan x={x + 80} dy="-0.4em">
-                    {label.slice(0, 22)}
-                  </tspan>
-                  <tspan x={x + 80} dy="1.2em">
-                    {label.slice(22)}
-                  </tspan>
-                </>
-              ) : (
-                label
-              )}
-            </text>
+            <DiagramBoxLabel x={x} y={y} width={boxW} height={boxH} label={label} fontSize={11} />
             {i < steps.length - 1 && col < 3 && (
               <path
-                d={`M ${x + 160} ${y + 35} L ${x + 180} ${y + 35}`}
+                d={`M ${x + boxW} ${y + boxH / 2} L ${x + 180} ${y + boxH / 2}`}
                 stroke="#6ea8a0"
                 stroke-width="1.5"
-                marker-end="url(#arrow)"
+                marker-end="url(#arrow-client)"
               />
             )}
           </g>
@@ -71,7 +56,7 @@ const steps = [
       })
     }
     <defs>
-      <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <marker id="arrow-client" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
         <path d="M0,0 L6,3 L0,6 Z" fill="#6ea8a0"></path>
       </marker>
     </defs>

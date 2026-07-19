@@ -1,4 +1,6 @@
 ---
+import DiagramBoxLabel from "./DiagramBoxLabel.astro";
+
 /**
  * Sanitized layered enterprise estate model — no employer-specific system names.
  */
@@ -15,41 +17,38 @@ const layers = [
 ---
 
 <figure class="diagram">
-  <svg viewBox="0 0 720 420" role="img" aria-labelledby="layered-estate-title layered-estate-desc">
+  <svg viewBox="0 0 720 440" role="img" aria-labelledby="layered-estate-title layered-estate-desc">
     <title id="layered-estate-title">Layered enterprise estate model</title>
     <desc id="layered-estate-desc">
       Eight stacked layers from enterprise estate down to repositories and engineering context,
       showing how architecture views connect product domains through APIs, integrations, workflows,
       and source repositories.
     </desc>
-    <rect width="720" height="420" fill="#101010" rx="8"></rect>
-    <g font-family="ui-monospace, monospace" font-size="13" fill="#f2f2f0">
-      {
-        layers.map((label, i) => {
-          const y = 28 + i * 46;
-          const width = 620 - i * 28;
-          const x = (720 - width) / 2;
-          const opacity = 0.12 + i * 0.03;
-          return (
-            <g>
-              <rect
-                x={x}
-                y={y}
-                width={width}
-                height={38}
-                rx="4"
-                fill={`rgba(110,168,160,${opacity})`}
-                stroke="#6ea8a0"
-                stroke-opacity="0.45"
-              />
-              <text x="360" y={y + 24} text-anchor="middle" fill="#e8e8e4">
-                {label}
-              </text>
-            </g>
-          );
-        })
-      }
-    </g>
+    <rect width="720" height="440" fill="#101010" rx="8"></rect>
+    {
+      layers.map((label, i) => {
+        const y = 28 + i * 50;
+        const width = 620 - i * 28;
+        const x = (720 - width) / 2;
+        const height = 42;
+        const opacity = 0.12 + i * 0.03;
+        return (
+          <g>
+            <rect
+              x={x}
+              y={y}
+              width={width}
+              height={height}
+              rx="4"
+              fill={`rgba(110,168,160,${opacity})`}
+              stroke="#6ea8a0"
+              stroke-opacity="0.45"
+            />
+            <DiagramBoxLabel x={x} y={y} width={width} height={height} label={label} fontSize={13} />
+          </g>
+        );
+      })
+    }
   </svg>
   <figcaption class="diagram__caption">
     Layered estate model connecting enterprise views to product domains, services, integrations, and

@@ -302,13 +302,21 @@ a:hover {
 .site-logo__text {
   display: inline-flex;
   align-items: baseline;
-  gap: 0.35rem;
+  flex-wrap: wrap;
+  column-gap: 0.4rem;
+  row-gap: 0;
   min-width: 0;
+  line-height: 1.15;
+}
+
+.site-logo__name {
+  white-space: nowrap;
 }
 
 .site-logo__muted {
   color: var(--color-text-faint);
   font-weight: 400;
+  white-space: nowrap;
 }
 
 .site-logo__photo {
@@ -975,6 +983,26 @@ a:hover {
   margin: var(--space-4) 0 0;
   font-size: 0.85rem;
   color: var(--color-text-faint);
+}
+
+/* Wrapped labels inside SVG boxes (foreignObject + XHTML) */
+.diagram-box-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  font-family: ui-monospace, "Cascadia Code", "Segoe UI Mono", monospace;
+  font-weight: 400;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  hyphens: auto;
+  overflow: hidden;
 }
 
 /* Reveal animations (JS-enhanced; content visible by default) */

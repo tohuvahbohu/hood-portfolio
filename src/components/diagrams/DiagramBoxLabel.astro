@@ -1,0 +1,61 @@
+---
+/**
+ * Centered multi-line label inside an SVG box.
+ * Uses foreignObject so text wraps within the box frame instead of overflowing.
+ * Critical styles are inlined because foreignObject styling can be inconsistent
+ * across browsers when relying only on external stylesheets.
+ */
+interface Props {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  label: string;
+  fontSize?: number;
+  color?: string;
+  padding?: number;
+}
+
+const {
+  x,
+  y,
+  width,
+  height,
+  label,
+  fontSize = 11,
+  color = "#e8e8e4",
+  padding = 6,
+} = Astro.props;
+
+const foX = x + padding;
+const foY = y + padding;
+const foW = Math.max(8, width - padding * 2);
+const foH = Math.max(8, height - padding * 2);
+
+const style = [
+  "display:flex",
+  "align-items:center",
+  "justify-content:center",
+  "box-sizing:border-box",
+  "width:100%",
+  "height:100%",
+  "margin:0",
+  "padding:0",
+  "text-align:center",
+  'font-family:ui-monospace,"Cascadia Code","Segoe UI Mono",monospace',
+  `font-size:${fontSize}px`,
+  "font-weight:400",
+  "line-height:1.25",
+  `color:${color}`,
+  "overflow-wrap:anywhere",
+  "word-break:normal",
+  "hyphens:auto",
+  "overflow:hidden",
+].join(";");
+---
+
+<foreignObject x={foX} y={foY} width={foW} height={foH}>
+  <div {...{ xmlns: "http://www.w3.org/1999/xhtml" }} style={style}>
+    {label}
+  </div>
+</foreignObject>
