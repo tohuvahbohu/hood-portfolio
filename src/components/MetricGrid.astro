@@ -1,6 +1,5 @@
 ---
 import { getHomepageMetrics, healthcareEstateNarrative } from "../data/metrics";
-import MetricVisuals from "./MetricVisuals.astro";
 const metrics = getHomepageMetrics();
 ---
 
@@ -13,9 +12,7 @@ const metrics = getHomepageMetrics();
       deployment transformation. Figures are provided for verification before publication.
     </p>
 
-    <MetricVisuals />
-
-    <div class="metric-grid metric-grid--compact">
+    <div class="metric-grid">
       {
         metrics.map((m) => (
           <article class="metric-card" data-reveal>
