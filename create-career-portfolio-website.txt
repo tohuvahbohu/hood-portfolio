@@ -1,0 +1,1705 @@
+You are continuing a career-positioning, portfolio, and interview-preparation project for me. Do not stop at general recommendations or a high-level plan. Work directly in the current local environment, create the necessary files, implement the site, create the deployment automation, validate the result, and guide me through any genuinely interactive authentication steps.
+
+# Primary objective
+
+Create a best-in-class static architecture portfolio and résumé website for:
+
+Michael Andrew Hood
+Domain: michaelandrewhood.com
+Location: Pensacola, Florida
+LinkedIn: https://linkedin.com/in/michael-andrew-hood
+Public contact email: [michael.andrew.hood@gmail.com](mailto:michael.andrew.hood@gmail.com)
+
+The site should position me for roles such as:
+
+* Principal Software Architect
+* Principal Application Architect
+* Enterprise Modernization Architect
+* AI Modernization Architect
+* Principal Platform Architect
+* Technical Fellow
+* Director of Architecture
+* Principal Solutions Architect
+
+My primary positioning is:
+
+Principal Software Architect | Enterprise Architecture | SaaS Modernization | .NET / Azure | AI-Enabled SDLC
+
+The website must be:
+
+* Hosted through GitHub Pages.
+* Connected to michaelandrewhood.com, which is registered through Cloudflare.
+* Entirely static, with no backend.
+* High quality enough to use as an architecture portfolio, résumé, recruiter landing page, and interview companion.
+* Responsive, accessible, fast, visually polished, and production-ready.
+* Easy for me to update later through centralized content files.
+* Deployable and maintainable by someone using Windows and PowerShell.
+* Safe with respect to credentials, employer confidentiality, and proprietary information.
+
+# Do not overstate my experience
+
+Use only the facts and metrics in this prompt. Do not invent revenue figures, performance improvements, team authority, formal titles, AI production deployments, certifications, or technical outcomes.
+
+Use “approximately,” “about,” or equivalent wording for scale figures where appropriate.
+
+My AI work should be positioned as:
+
+* AI-enabled SDLC strategy
+* enterprise context ingestion
+* architecture assessment automation
+* codebase analysis
+* developer workflow modernization
+* architecture automation
+* modernization readiness
+* human-reviewed architecture generation
+
+Do not position me as an ML researcher, model-training specialist, data scientist, or production machine-learning infrastructure expert.
+
+The current healthcare employer should remain anonymous by default and be displayed as:
+
+Healthcare SaaS Company — Software Architect, Enterprise Architecture & AI Modernization
+
+Create a centralized configuration value that would later allow me to disclose the employer name without editing multiple pages.
+
+Do not publish my phone number by default. Place it in an optional configuration field that is disabled for the public site.
+
+# Required technology approach
+
+Build the site with a modern static-site stack suitable for GitHub Pages.
+
+Preferred stack:
+
+* Astro
+* TypeScript
+* Semantic HTML
+* Custom CSS using CSS variables and modern layout primitives
+* GSAP with ScrollTrigger for carefully controlled pinned and sticky storytelling
+* Lenis, or a similarly lightweight smooth-scroll library, if it improves the experience
+* Locally bundled font packages rather than runtime calls to third-party font CDNs
+* Minimal client-side JavaScript
+* GitHub Actions for build and deployment
+
+Use current stable package versions available in the environment at implementation time. Pin versions through package-lock.json.
+
+Do not use a backend, database, serverless API, authentication system, CMS, or form-processing service.
+
+Do not use a heavyweight UI framework unless there is a compelling reason. Astro components, TypeScript data files, Markdown content, CSS, and small client-side animation modules should be enough.
+
+Use npm unless the current environment already has a clearly preferable package manager configured.
+
+# Design direction
+
+The visual style should be dark, technical, refined, and executive rather than flashy.
+
+Use:
+
+* A true black or near-black background.
+* Near-white primary text.
+* Muted gray secondary text.
+* One restrained technical accent color.
+* Subtle borders, grid lines, and diagrammatic visual motifs.
+* Large editorial typography.
+* Generous spacing.
+* A desktop layout that feels premium and deliberate.
+* A mobile layout that remains readable and does not depend on scroll pinning.
+
+Avoid:
+
+* Generic startup gradients.
+* Excessive glowing effects.
+* Gimmicky 3D.
+* Cursor hijacking.
+* Constant movement.
+* Auto-playing video.
+* Sound.
+* Overly animated metrics.
+* Anything that reduces readability or accessibility.
+
+The visual tone should communicate:
+
+* architectural judgment
+* technical depth
+* calm authority
+* modernization leadership
+* enterprise scale
+* hands-on credibility
+
+# Scrolling and interaction requirements
+
+I want a smooth, cinematic scrolling experience where some content sticks or pins while related content moves through it, then releases naturally.
+
+Implement this carefully:
+
+1. The hero should transition smoothly into the architecture outcomes.
+2. At least two major storytelling sections should use a sticky or pinned layout on desktop.
+3. A good pattern would be:
+
+   * Left column remains sticky with the case-study title, context, and key metric.
+   * Right column scrolls through challenge, approach, decisions, tradeoffs, and results.
+   * The section releases naturally after its final panel.
+4. Elements should animate appropriately when scrolling down and reverse or reset appropriately when scrolling up.
+5. Animation should be subtle:
+
+   * opacity
+   * short vertical translation
+   * line or diagram drawing
+   * panel transitions
+6. Do not use long or disorienting parallax.
+7. On tablets and phones, convert pinned layouts to normal stacked content.
+8. Respect prefers-reduced-motion and disable smooth scrolling, pinning, and nonessential animation when reduced motion is requested.
+9. Ensure keyboard navigation, anchor links, browser back behavior, and focus movement work correctly.
+10. Sticky elements must never trap content or make text inaccessible.
+
+# Performance and accessibility requirements
+
+Target excellent Lighthouse performance and accessibility.
+
+Required:
+
+* Semantic landmarks.
+* Correct heading hierarchy.
+* Visible keyboard focus states.
+* Skip-to-content link.
+* WCAG AA color contrast.
+* Descriptive link text.
+* SVG titles and descriptions where appropriate.
+* Reduced-motion support.
+* No layout shift caused by late-loading assets.
+* Responsive images.
+* Minimal JavaScript.
+* No console errors.
+* No cookie banners because there should be no tracking by default.
+* No third-party analytics by default.
+* Print-friendly résumé page.
+* Useful content without JavaScript, even if animations are unavailable.
+
+# Site structure
+
+Create the following primary routes:
+
+* /
+* /work/
+* /resume/
+* /about/
+* /contact/
+* /404.html
+
+The home page should be a carefully composed single-page narrative with links to deeper case studies.
+
+Suggested navigation:
+
+* Overview
+* Outcomes
+* Work
+* Experience
+* Approach
+* Résumé
+* Contact
+
+Create individual case-study routes under /work/ when useful, such as:
+
+* /work/healthcare-enterprise-architecture/
+* /work/client-integration-reference-architecture/
+* /work/ai-ready-context-ingestion/
+* /work/code-derived-architecture/
+* /work/commerce-platform-modernization/
+* /work/retail-deployment-transformation/
+
+# Site content architecture
+
+Keep all editable content centralized.
+
+Use a structure similar to:
+
+* src/data/profile.ts
+* src/data/metrics.ts
+* src/data/experience.ts
+* src/data/capabilities.ts
+* src/content/case-studies/*.md
+* src/components/
+* src/layouts/
+* src/pages/
+* src/styles/
+* src/scripts/
+
+Metrics should exist in one source of truth and be referenced from pages rather than duplicated manually.
+
+Create clear comments beside sensitive or user-supplied metrics such as:
+
+// USER-PROVIDED METRIC — VERIFY BEFORE PUBLICATION
+
+Create a single configuration object for:
+
+* public name
+* professional headline
+* domain
+* email
+* LinkedIn
+* location
+* current employer display name
+* whether to show current employer name
+* whether to show phone number
+* whether to show exact metrics
+* résumé download/print behavior
+
+# Homepage copy and structure
+
+Use the following as the baseline. Improve line breaks and rhythm, but preserve the meaning.
+
+## Hero
+
+Eyebrow:
+
+Michael Andrew Hood — Principal Software Architect
+
+Primary headline:
+
+Enterprise architecture for systems that have to scale.
+
+Supporting copy:
+
+I help SaaS organizations understand complex application estates, modernize .NET platforms, standardize client integrations, and prepare engineering workflows for AI-enabled delivery.
+
+Supporting line:
+
+Enterprise architecture, modernization strategy, production engineering, and platform governance across healthcare SaaS, travel, logistics, retail, security, payments, and cloud environments.
+
+Primary call to action:
+
+Explore architecture outcomes
+
+Secondary call to action:
+
+View printable résumé
+
+Tertiary contact:
+
+Start a conversation
+
+Display:
+
+Pensacola, Florida
+Remote-first
+Available for occasional travel
+
+Do not display a claim that I am actively available for employment unless that is a configurable option.
+
+## Outcome metrics
+
+Present these as restrained, high-signal metrics rather than animated marketing counters:
+
+* 530 repositories mapped within a healthcare SaaS estate
+* 83 APIs and approximately 2,000 endpoints assessed
+* 11 customer-facing applications represented
+* 72 healthcare client integration contexts supported
+* Client architecture preparation reduced from approximately one week to hours
+* Role-focused onboarding reduced from approximately two weeks to one day
+* Architecture refresh cycles reduced from annual manual work to approximately four hours
+* Retail software installation reduced from several months to approximately one hour
+
+Clarify the relationships between healthcare metrics:
+
+The healthcare SaaS estate spans 530 repositories, including approximately 500 component repositories, 40 priority services, 83 APIs, approximately 2,000 endpoints, and 11 customer-facing applications.
+
+Do not scatter those figures in ways that make them sound unrelated.
+
+## Architecture statement
+
+Section headline:
+
+Architecture is useful only when it changes decisions.
+
+Body:
+
+I use architecture models, reference patterns, implementation standards, and code-level understanding to help organizations sequence modernization, reduce implementation risk, improve engineering adoption, and scale product delivery.
+
+Architecture documentation is not the end product. It is a mechanism for creating shared understanding, exposing dependencies, evaluating tradeoffs, accelerating onboarding, standardizing integrations, and aligning technical change with business direction.
+
+## Capabilities
+
+Use these capability groups:
+
+### Enterprise architecture and estate visibility
+
+* Estate-wide architecture modeling
+* Product and platform boundary definition
+* Application portfolio assessment
+* Dependency and integration mapping
+* Architecture governance
+* Technical risk identification
+* Modernization sequencing
+
+### SaaS and client integration architecture
+
+* Client integration reference architectures
+* Reusable implementation patterns
+* Component, sequence, flow, and data-movement diagrams
+* Data-transfer agreement documentation
+* Productization of client delivery
+* Integration repeatability
+* Customization-boundary strategy
+
+### .NET and cloud modernization
+
+* Legacy .NET estate assessment
+* Modern .NET migration strategy
+* Monolith decomposition
+* Strangler-pattern modernization
+* Service-layer extraction
+* API modernization
+* Azure architecture
+* CI/CD and delivery modernization
+
+### AI-enabled SDLC and architecture automation
+
+* Repository and context ingestion
+* Codebase analysis
+* Architecture assessment automation
+* Code-derived architecture documentation
+* Jira and Confluence ingestion
+* Human-reviewed architecture generation
+* Developer workflow modernization
+* AI modernization readiness
+
+### Production systems and integration
+
+* Transactional commerce workflows
+* Payments, refunds, and cancellation systems
+* Event-driven integration
+* MuleSoft integrations
+* Azure Event Hub
+* SQL Server transactional systems
+* Production troubleshooting
+* Reliability and data consistency
+
+# Architecture principles section
+
+Create a visually strong section titled:
+
+How I approach architecture
+
+Use the following principles.
+
+## Architecture is a decision system
+
+The purpose of architecture is not to produce diagrams. It is to improve the quality, speed, and consistency of decisions across product, engineering, implementation, and leadership.
+
+## Modernization is sequencing, not rewriting
+
+Large estates cannot be modernized responsibly through indiscriminate replacement. Modernization requires dependency awareness, risk prioritization, incremental boundaries, and a credible transition architecture.
+
+## Product boundaries are part of the architecture
+
+When a SaaS company accepts unlimited client-specific behavior, technical complexity becomes a business-model problem. Architecture should help define what belongs in the product, what belongs in configuration, and what should not be supported.
+
+## Architecture should remain connected to code
+
+Static documentation becomes stale. Architecture should increasingly be derived from repositories, interfaces, deployment metadata, and runtime evidence, while preserving human review of intent and correctness.
+
+## AI requires context and governance
+
+AI-assisted modernization depends on accessible organizational context, evaluation, traceability, human approval, and clear boundaries. Context ingestion is an architecture capability, not merely a prompt-engineering task.
+
+## Principal architects stay close to delivery
+
+Architecture judgment improves when it remains grounded in APIs, data movement, production constraints, deployment systems, integration behavior, and the consequences of implementation decisions.
+
+# Case studies
+
+Create polished, public-safe case studies using the following facts. Each case study should contain:
+
+* Context
+* Challenge
+* Scope
+* My role
+* Approach
+* Key architectural decisions
+* Tradeoffs
+* Outcome
+* What I learned
+* A sanitized diagram
+* Related capabilities
+
+Do not invent missing technical details. Where a detail would improve the story but is not provided, create a clearly marked placeholder or question for later refinement.
+
+## Case study 1: Making a large healthcare SaaS estate actionable
+
+Suggested title:
+
+From fragmented system knowledge to an actionable enterprise architecture model
+
+Context:
+
+A healthcare SaaS company was transitioning from startup-style custom client delivery toward a scalable product operating model following a private-equity acquisition.
+
+The application estate had grown across:
+
+* 530 repositories
+* approximately 500 component repositories
+* 40 priority services
+* 83 APIs
+* approximately 2,000 endpoints
+* 11 customer-facing applications
+* 15 engineering or delivery teams
+
+Challenge:
+
+System knowledge was distributed across code, documents, teams, Jira, Confluence, diagrams, and tribal knowledge. Leadership and engineering needed a consistent way to understand product boundaries, integration dependencies, modernization risk, and delivery impact.
+
+My role:
+
+Lead the creation of a multi-level enterprise architecture model and connect it to modernization planning, product decisions, onboarding, client delivery, and engineering execution.
+
+Approach:
+
+* Created estate-wide architecture views.
+* Created per-product views.
+* Mapped integrations and data movement.
+* Created workflow-level views for critical processes.
+* Connected higher-level architecture to code and repository context.
+* Created views appropriate for executives, product teams, architects, engineers, and onboarding.
+* Used architecture artifacts as inputs to modernization sequencing and risk assessment.
+
+Outcomes:
+
+* Established a shared model of the application estate.
+* Improved role-focused onboarding from approximately two weeks to one day.
+* Reduced architecture and high-level-design refresh cycles from annual manual work to approximately four hours.
+* Supported modernization planning across the full estate.
+* Improved visibility into product boundaries, integrations, dependencies, and client-delivery concerns.
+* Influenced architecture and modernization practices across 15 teams.
+
+Principal-level framing:
+
+The result was not merely better documentation. It was an architectural operating model that enabled more consistent modernization, delivery, onboarding, and product decisions.
+
+Suggested diagram:
+
+A layered estate model showing:
+
+* Enterprise estate
+* Product domains
+* Applications
+* APIs and services
+* Integrations
+* Data movement
+* Workflows
+* Source repositories and engineering context
+
+## Case study 2: Productizing healthcare client integrations
+
+Suggested title:
+
+Turning one-off client architecture into repeatable integration patterns
+
+Context:
+
+The company supported healthcare delivery across 72 client contexts. Client architecture work risked becoming repetitive, slow, and overly dependent on custom interpretation.
+
+Challenge:
+
+Client-facing teams, product, architects, engineering, and implementation stakeholders needed a reusable language for discussing systems, workflows, data movement, dependencies, and delivery risks.
+
+My role:
+
+Design reusable client integration reference architectures and standardize the artifacts needed to move from discovery into implementation.
+
+Approach:
+
+* Developed reusable component diagrams.
+* Developed sequence diagrams.
+* Developed flow diagrams.
+* Created workflow models.
+* Created data-transfer agreement documentation.
+* Distinguished product capabilities from client-specific configuration.
+* Moved architecture earlier into product and client conversations.
+* Established patterns that could be reused and adapted rather than recreated.
+
+Outcomes:
+
+* Reduced client architecture preparation from approximately one week to hours.
+* Improved consistency across client discussions.
+* Made integration assumptions and data movement visible earlier.
+* Reduced downstream ambiguity and implementation risk.
+* Supported the transition from custom client delivery toward repeatable SaaS implementation models.
+
+Suggested diagram:
+
+A sanitized sequence showing:
+
+* Client system
+* Secure transfer or integration boundary
+* SaaS integration layer
+* Core product API
+* Workflow service
+* Data store
+* Event or notification path
+* Operational response
+
+## Case study 3: Creating AI-ready context for enterprise modernization
+
+Suggested title:
+
+Building the context foundation for AI-enabled architecture and SDLC
+
+Context:
+
+The organization wanted to move toward AI-enabled modernization, but the information needed for trustworthy architecture assessment was fragmented across source code and delivery systems.
+
+Challenge:
+
+AI could not meaningfully assist architecture and modernization without current access to repositories, documentation, tickets, workflows, and system context.
+
+My role:
+
+Create the initial context-ingestion architecture and repository automation needed for future AI-assisted analysis.
+
+Approach:
+
+* Created scripts that clone or update organizational repositories to a controlled local environment.
+* Covered approximately 500 component repositories within the broader 530-repository estate.
+* Began creating ingestion paths for:
+
+  * source code
+  * PDFs
+  * images
+  * documents
+  * Jira tickets
+  * Confluence pages
+  * architecture artifacts
+* Organized context to support:
+
+  * codebase analysis
+  * architecture assessment
+  * modernization planning
+  * onboarding
+  * future AI-enabled SDLC workflows
+* Preserved human review as the authority for correctness and architectural intent.
+
+Outcome:
+
+* Created a foundation for AI-assisted architecture assessment and modernization.
+* Reduced dependence on disconnected tribal knowledge.
+* Connected code and delivery artifacts into a common context model.
+* Established a safer and more practical path toward AI-enabled engineering workflows.
+
+Important wording:
+
+Do not claim that this was a fully deployed autonomous AI platform. Present it as the architecture and implementation foundation for AI-enabled modernization.
+
+Suggested diagram:
+
+Inputs:
+
+* Git repositories
+* Jira
+* Confluence
+* PDFs
+* documents
+* images
+* existing diagrams
+
+Pipeline:
+
+* discovery
+* synchronization
+* normalization
+* parsing
+* metadata
+* context organization
+* assessment
+
+Outputs:
+
+* architecture views
+* dependency findings
+* modernization backlog
+* onboarding context
+* human-reviewed recommendations
+
+## Case study 4: Keeping architecture synchronized with engineering change
+
+Suggested title:
+
+Moving architecture documentation closer to the code lifecycle
+
+Context:
+
+Manually created architecture diagrams immediately began becoming stale as code and integrations changed.
+
+Challenge:
+
+The organization needed architecture documentation that could be refreshed efficiently without allowing automatic tooling to misrepresent system intent.
+
+My role:
+
+Design an architecture-documentation approach that derives structural information from source code and routes the result through architect review.
+
+Approach:
+
+* Identify architecture facts that can be derived from code.
+* Generate diagrams or diagram source from repository changes.
+* Separate discovered structure from human-authored intent.
+* Create review and approval steps for architects.
+* Standardize visual style and notation.
+* Make architecture updates part of the engineering lifecycle.
+* Preserve the ability to override or annotate generated views.
+
+Outcomes:
+
+* Reduced current organizational architecture and high-level-design refresh effort from annual manual work to approximately four hours.
+* Created the direction for code-derived diagrams that remain closer to the current system state.
+* Preserved human approval for correctness, style, and intent.
+* Improved the potential usefulness of architecture documentation for onboarding, design review, and modernization planning.
+
+Be precise:
+
+The broader code-derived architecture system is a current initiative. Distinguish completed improvements from planned or in-progress capabilities.
+
+Suggested diagram:
+
+Repository change
+→ static analysis
+→ relationship extraction
+→ draft architecture model
+→ architect review
+→ approved architecture view
+→ published documentation
+
+## Case study 5: Transactional commerce and integration at Vail Resorts
+
+Suggested title:
+
+Modernizing business-critical commerce workflows without losing production reliability
+
+Context:
+
+The platform supported guest commerce workflows across:
+
+* reservations
+* payments
+* refunds
+* cancellations
+* rentals
+* lift access
+* lesson management
+* scanning
+* food and beverage
+* mobile and backend integrations
+
+Challenge:
+
+Changes had to preserve transactional correctness, data consistency, integration behavior, and operational continuity across production systems.
+
+My role:
+
+Work hands-on across APIs, database behavior, integrations, modernization, testing, deployment, and production support.
+
+Approach:
+
+* Built and maintained C#/.NET REST APIs.
+* Implemented refund and cancellation workflows.
+* Worked with payment authorization and credit-card gateway integrations.
+* Used SQL Server, T-SQL, Dapper, ADO.NET, and transaction tables.
+* Migrated legacy .NET Framework functionality toward modern .NET.
+* Extracted service-layer behavior from stored procedures.
+* Ported unit tests.
+* Converted endpoints to asynchronous implementations.
+* Integrated with MuleSoft APIs.
+* Integrated with Azure Event Hub.
+* Supported push notifications, SSRS reports, SQL Agent jobs, and mobile/backend contracts.
+* Worked across deployment and production-support concerns.
+
+Outcome:
+
+* Evolved business-critical commerce capabilities while maintaining operational continuity.
+* Preserved hands-on production credibility alongside architecture leadership.
+* Gained direct experience with the consequences of architecture decisions in transactional and integration-heavy systems.
+
+Principal-level framing:
+
+This case study demonstrates that my architecture decisions remain grounded in production systems, transactional behavior, integration failure modes, and implementation realities.
+
+Suggested diagram:
+
+Guest request
+→ commerce API
+→ workflow validation
+→ transaction boundary
+→ payment authorization
+→ core data update
+→ event publication
+→ downstream systems
+→ customer notification
+→ reporting and operational support
+
+## Case study 6: Transforming retail software deployment
+
+Suggested title:
+
+Reducing a multi-month retail installation process to approximately one hour
+
+Context:
+
+At IBM, retail storefront installation was slow, complex, and difficult to scale across a large retail footprint.
+
+The technology supported a retail environment of approximately 100,000 stores. Mark this number for verification before publication.
+
+Challenge:
+
+The existing installation and delivery process could take several months.
+
+My role:
+
+Lead architecture definition, client-facing solution design, automation direction, implementation coordination, and stakeholder alignment across three teams.
+
+Approach:
+
+* Assessed the existing installation workflow.
+* Identified architectural and operational bottlenecks.
+* Redesigned the installation model.
+* Introduced automation.
+* Coordinated architecture and implementation across multiple teams.
+* Worked with IBM stakeholders, client stakeholders, designers, sponsor users, engineers, and product owners.
+* Used proof-of-concept work to reduce uncertainty.
+* Supported hybrid-cloud environments across Azure, GCP, and on-premises systems.
+
+Outcome:
+
+* Reduced installation time from several months to approximately one hour.
+* Improved deployment scalability.
+* Reduced operational friction.
+* Created a repeatable installation approach.
+* Demonstrated architecture impact on the operating model rather than only the software structure.
+
+Suggested diagram:
+
+Before:
+
+Manual preparation
+→ environment coordination
+→ installation steps
+→ configuration
+→ validation
+→ delays and rework
+
+After:
+
+Validated package
+→ automated environment preparation
+→ automated installation
+→ configuration application
+→ verification
+→ approximately one-hour completion
+
+## Optional supporting case study: Werner Enterprises modernization
+
+Suggested title:
+
+Defining modernization patterns across a distributed .NET estate
+
+Scope:
+
+* approximately 20 repositories
+* approximately 20 components
+* approximately 200 endpoints
+* approximately 340 services
+* two teams
+
+Work included:
+
+* iOS, Android, web, and internal platforms
+* external customer-facing applications
+* CI/CD architecture
+* legacy .NET API modernization
+* greenfield applications
+* monolithic API decomposition
+* lift-and-shift migrations
+* strangler-pattern modernization
+* infrastructure and CI/CD improvements
+* application-boundary definition
+* implementation patterns
+* AI/ML experimentation for data analysis and chatbots
+
+Use this as either a secondary case study or a condensed experience entry depending on page density.
+
+# Experience timeline copy
+
+Create an executive-spacious timeline rather than reproducing every résumé bullet.
+
+## Healthcare SaaS Company
+
+Software Architect, Enterprise Architecture & AI Modernization
+2025–Present | Remote
+
+Summary:
+
+Leading enterprise architecture, client integration standardization, .NET estate modernization, architecture automation, developer-experience improvement, and AI-enabled SDLC readiness for a post-acquisition healthcare SaaS company.
+
+Selected scope:
+
+* 530 repositories
+* 40 priority services
+* 83 APIs
+* approximately 2,000 endpoints
+* 11 customer-facing applications
+* 72 client contexts
+* 15 teams influenced
+
+## TEKsystems
+
+Application Architect / Senior Software Engineer, Client Engagements
+2021–2026 | Remote
+
+Client engagements:
+
+### Vail Resorts
+
+Enterprise commerce, payment, integration, API modernization, and production systems across guest reservations, refunds, cancellations, rentals, lift access, lessons, scanning, and food-and-beverage workflows.
+
+### Werner Enterprises
+
+Application architecture and platform modernization across mobile, web, internal platforms, external applications, .NET APIs, monolith decomposition, Azure, and CI/CD.
+
+Present these as client engagements under one TEKsystems umbrella so the timeline does not look like unexplained simultaneous full-time positions.
+
+## IBM
+
+Application Architect, Azure Cloud Microservices, Product Owner & Team Manager
+2018–2021
+
+Summary:
+
+Led client-facing architecture and delivery across three teams for retail point-of-sale, tax and accounting applications, internal tools, storefront installations, hybrid cloud, and back-office systems.
+
+Key outcome:
+
+Reduced retail storefront installation time from several months to approximately one hour.
+
+## AppRiver
+
+Associate Software Developer
+2015–2018
+
+Summary:
+
+Built and supported SaaS applications, internal tooling, Windows applications, eventing systems, installers, drivers, and cloud services serving 60,000 companies and 10 million mailboxes.
+
+Key outcome:
+
+Led a critical SecureSurf Desktop Agent initiative that prevented a major outage and preserved use across approximately 1,500 companies.
+
+# Résumé page
+
+Create a dedicated /resume/ route that:
+
+* Uses an executive-spacious format.
+* Can be printed cleanly through the browser.
+* Includes a “Print / Save as PDF” button.
+* Has a dedicated print stylesheet.
+* Removes navigation, animation, black backgrounds, and nonessential design during printing.
+* Produces a clean white-page résumé when saved as PDF.
+* Does not depend on an uploaded PDF.
+* Uses the same centralized experience and metrics data as the rest of the site.
+
+Use the headline:
+
+Principal Software Architect | Enterprise Architecture | SaaS Modernization | .NET / Azure | AI-Enabled SDLC
+
+Use this summary:
+
+Principal-level software architect and hands-on engineering leader with 10+ years of experience modernizing enterprise software platforms across healthcare SaaS, travel, logistics, retail, security, payments, and cloud environments. Specializes in enterprise architecture, .NET modernization, SaaS product scalability, client integration strategy, API and event-driven architecture, architecture governance, developer-experience modernization, and AI-enabled SDLC.
+
+Known for turning complex application estates into understandable, governable, and scalable platforms that support modernization planning, delivery acceleration, technical risk reduction, client integration repeatability, and engineering adoption.
+
+Keep the résumé to approximately two printed pages.
+
+# About page
+
+Use a professional first-person voice.
+
+Suggested copy:
+
+I am a software architect and hands-on engineering leader focused on helping organizations understand and evolve complex software systems.
+
+My work sits at the intersection of enterprise architecture, production engineering, modernization strategy, product boundaries, client integration, developer experience, and AI-enabled delivery.
+
+I have worked across healthcare SaaS, travel, logistics, retail, security, payments, and cloud platforms. My strongest work typically begins where an organization has accumulated complexity faster than it has accumulated shared understanding.
+
+I create the models, reference patterns, implementation approaches, and modernization sequences that help teams make better decisions. I remain close to code, APIs, data movement, CI/CD, and production behavior because architecture should be informed by the systems teams actually have to build and operate.
+
+My current focus is helping SaaS organizations prepare for AI-enabled modernization without treating AI as a substitute for engineering judgment, architecture context, evaluation, governance, or human approval.
+
+# Contact page
+
+Suggested heading:
+
+Let’s talk about the systems behind the roadmap.
+
+Suggested copy:
+
+I am interested in conversations about enterprise architecture, SaaS modernization, .NET platform strategy, client integration architecture, developer experience, and AI-enabled engineering transformation.
+
+Contact links:
+
+* Email Michael
+* LinkedIn
+* View résumé
+* Explore case studies
+
+Use email and LinkedIn only by default.
+
+Obfuscate the email in rendered source if practical without harming accessibility, but do not introduce a backend or unreliable contact form.
+
+# SEO and metadata
+
+Implement:
+
+* Canonical URLs for michaelandrewhood.com.
+* Open Graph metadata.
+* Social preview image.
+* Sitemap.
+* robots.txt.
+* Favicon.
+* Schema.org Person JSON-LD.
+* Appropriate page titles and descriptions.
+* Structured data for:
+
+  * name
+  * job title
+  * location
+  * knowsAbout
+  * LinkedIn
+  * domain
+* No fake employer organization schema for the anonymous current employer.
+* No phone number in public structured data.
+
+Suggested homepage title:
+
+Michael Andrew Hood | Principal Software Architect
+
+Suggested homepage description:
+
+Principal software architect specializing in enterprise architecture, SaaS modernization, .NET and Azure platforms, client integration architecture, developer experience, and AI-enabled SDLC.
+
+# Diagram implementation
+
+Create sanitized architecture diagrams as reusable Astro components using SVG, HTML, and CSS.
+
+Do not copy proprietary diagrams or use employer-specific system names.
+
+Create reusable diagram components for:
+
+* Layered enterprise estate
+* Client integration sequence
+* Context-ingestion pipeline
+* Code-derived architecture workflow
+* Transactional commerce flow
+* Deployment transformation
+
+Requirements:
+
+* Responsive.
+* Accessible titles and descriptions.
+* Printable.
+* Dark-theme compatible.
+* Reduced-motion compatible.
+* Visually consistent.
+* Data-driven when practical.
+* No dependency on a backend.
+* Avoid a headless-browser dependency merely to render diagrams.
+
+# GitHub repository and deployment
+
+Default repository behavior:
+
+1. Determine the authenticated GitHub username using GitHub CLI.
+2. Default the repository name to: <GitHubUsername>.github.io
+3. If that repository exists:
+
+   * Inspect it.
+   * Do not overwrite existing work without explicit confirmation or a -Force switch.
+   * If safe, clone or use it.
+4. If it does not exist:
+
+   * Create it.
+   * Default to public visibility.
+   * Use main as the default branch.
+5. Create the site in a clean local project directory.
+6. Initialize Git if needed.
+7. Configure the remote.
+8. Commit the initial production-ready site.
+9. Push to main.
+10. Configure GitHub Pages to deploy using GitHub Actions.
+11. Configure michaelandrewhood.com as the custom domain.
+12. Add public/CNAME containing:
+    michaelandrewhood.com
+13. Verify the GitHub Pages configuration after deployment.
+14. Print the GitHub repository URL, GitHub Pages URL, and custom domain URL.
+
+Create a GitHub Actions workflow at:
+
+.github/workflows/deploy.yml
+
+The workflow should:
+
+* Run on pushes to main.
+* Allow manual workflow dispatch.
+* Use currently supported official GitHub actions.
+* Install dependencies using npm ci.
+* Run formatting/checking/build validation.
+* Build the Astro site.
+* Upload the GitHub Pages artifact.
+* Deploy using the official GitHub Pages deployment action.
+* Use least-privilege permissions.
+* Use concurrency to prevent conflicting deployments.
+
+# Cloudflare domain configuration
+
+The domain michaelandrewhood.com is registered with Cloudflare.
+
+The PowerShell automation should support two modes.
+
+## Mode 1: Guided manual Cloudflare configuration
+
+If no Cloudflare API token exists:
+
+* Print a clear checklist.
+* Determine the GitHub Pages host from the authenticated GitHub username.
+* Explain which DNS records need to be created.
+* Prefer standards-compatible records supported by Cloudflare and GitHub Pages.
+* Avoid hardcoding stale GitHub Pages IP addresses when a safer dynamic or CNAME-flattening approach is available.
+* Use DNS-only mode initially for certificate issuance.
+* Explain how to configure:
+
+  * apex domain
+  * www subdomain
+  * custom domain in GitHub Pages
+  * HTTPS enforcement after certificate issuance
+* Verify visible DNS records using Resolve-DnsName.
+* Clearly distinguish completed automated steps from manual steps.
+
+## Mode 2: Optional Cloudflare API automation
+
+Only if I explicitly enable it and provide a scoped API token through an environment variable.
+
+Use:
+
+CLOUDFLARE_API_TOKEN
+
+Requirements:
+
+* Never ask me to paste the token directly into source code.
+* Never store the token in the repository.
+* Never print the token.
+* Never write it to logs.
+* Require a token scoped only to the relevant zone with minimum necessary permissions such as Zone Read and DNS Edit.
+* Discover the correct Cloudflare zone.
+* Create or update the required DNS records idempotently.
+* Use DNS-only mode initially.
+* Verify records after changes.
+* Print a clear success or failure summary.
+* Do not attempt unrelated Cloudflare configuration.
+
+# Required PowerShell automation
+
+Create a robust main script named:
+
+Bootstrap-ArchitecturePortfolio.ps1
+
+The script should be production-quality, readable, idempotent, and safe to rerun.
+
+Suggested parameters:
+
+-ProjectRoot
+-GitHubOwner
+-RepoName
+-CustomDomain
+-ConfigureCloudflare
+-SkipDependencyInstall
+-SkipDeploy
+-NonInteractive
+-Force
+-OpenBrowser
+-WhatIf
+-Verbose
+
+Suggested default project folder:
+
+.\michaelandrewhood-portfolio
+
+Use:
+
+* CmdletBinding
+* SupportsShouldProcess where appropriate
+* Set-StrictMode
+* $ErrorActionPreference = 'Stop'
+* structured functions
+* reliable external-process handling
+* timestamps
+* log levels
+* exit codes
+* clear summaries
+
+Create log files under:
+
+.\logs\bootstrap-YYYYMMDD-HHMMSS.log
+
+Logging requirements:
+
+Every major step should display:
+
+* Timestamp
+* Severity
+* Step name
+* Human-readable message
+
+Severity levels:
+
+* INFO
+* SUCCESS
+* WARN
+* ERROR
+* DEBUG
+
+When an external command fails, print:
+
+* Command name
+* Exit code
+* Relevant standard output
+* Relevant standard error
+* Current working directory
+* Suggested corrective action
+
+Do not expose tokens, authorization headers, or credentials in logs.
+
+# Dependency checks
+
+The script must check for and validate:
+
+* PowerShell 7 or a supported environment
+* Git
+* GitHub CLI
+* Node.js using a currently supported active LTS release compatible with Astro
+* npm
+* Network access to GitHub and npm
+
+Optional:
+
+* VS Code, but do not install it unless requested
+* Cloudflare tooling only if genuinely needed
+
+Dependency behavior:
+
+1. Detect existing commands and versions.
+2. Validate minimum compatible versions.
+3. If a dependency is missing:
+
+   * Prefer winget on Windows.
+   * Use an existing trusted package manager if winget is unavailable.
+   * Do not run unverified curl-pipe-shell commands.
+4. If automatic installation is not safe or available:
+
+   * Stop that step cleanly.
+   * Print exact manual installation instructions.
+5. Recheck the dependency after installation.
+6. If PowerShell 7 must be installed from Windows PowerShell:
+
+   * Install it safely.
+   * Relaunch the script under pwsh if practical.
+   * Preserve parameters.
+7. Do not require administrator privileges unless a dependency installation genuinely requires them.
+8. Explain when elevation is needed.
+
+# GitHub authentication
+
+Use GitHub CLI.
+
+Behavior:
+
+1. Run gh auth status.
+2. If authenticated, continue.
+3. If not authenticated:
+
+   * In interactive mode, initiate the official GitHub CLI browser or device-code login.
+   * Wait for the login flow to complete.
+   * Re-run gh auth status.
+4. Do not request or store a personal access token in source code.
+5. If a token is already supplied through a standard secure environment variable, use it without printing it.
+6. Determine the authenticated username through the GitHub API.
+7. Verify repository permissions before creating or changing anything.
+
+# Local project safety
+
+Before generating files:
+
+* Inspect the target directory.
+* If it does not exist, create it.
+* If it exists and is empty, continue.
+* If it contains an existing Git repository:
+
+  * Inspect status and remotes.
+  * Do not overwrite uncommitted changes.
+* If it contains non-Git files:
+
+  * Stop unless -Force is explicitly supplied.
+* Before replacing files under -Force:
+
+  * Create a timestamped backup or backup branch.
+* Never delete unrelated files.
+
+# Site generation process
+
+The Grok CLI session should create the actual project files, not merely tell me what files to create.
+
+The PowerShell script should orchestrate:
+
+* Environment validation
+* Dependency installation when needed
+* GitHub authentication
+* Repository discovery or creation
+* Project initialization
+* npm installation
+* validation
+* build
+* Git initialization
+* commit
+* push
+* GitHub Pages configuration
+* optional Cloudflare DNS configuration
+* deployment verification
+
+The site source should remain normal editable files. Do not embed the entire site into unreadable PowerShell here-strings unless necessary.
+
+# Suggested file tree
+
+Create a clean structure similar to:
+
+/
+.github/
+workflows/
+deploy.yml
+logs/
+public/
+CNAME
+favicon.svg
+og-image.svg
+robots.txt
+scripts/
+validate-site.mjs
+src/
+components/
+Header.astro
+Footer.astro
+Hero.astro
+MetricGrid.astro
+StickyCaseStudy.astro
+ExperienceTimeline.astro
+ArchitecturePrinciples.astro
+ContactPanel.astro
+diagrams/
+content/
+case-studies/
+data/
+profile.ts
+metrics.ts
+experience.ts
+capabilities.ts
+layouts/
+BaseLayout.astro
+CaseStudyLayout.astro
+pages/
+index.astro
+work/
+resume.astro
+about.astro
+contact.astro
+404.astro
+scripts/
+scrolling.ts
+navigation.ts
+styles/
+global.css
+print.css
+private-interview/
+.gitignore
+astro.config.mjs
+package.json
+package-lock.json
+README.md
+SECURITY.md
+tsconfig.json
+Bootstrap-ArchitecturePortfolio.ps1
+
+The private-interview directory must be excluded through .gitignore and must never be pushed to a public repository.
+
+# Validation and testing
+
+Create npm scripts such as:
+
+* npm run dev
+* npm run check
+* npm run lint
+* npm run format
+* npm run format:check
+* npm run build
+* npm run preview
+* npm run validate
+
+Validation should include:
+
+* Astro type checking
+* TypeScript checking
+* Formatting
+* Linting
+* Production build
+* Internal-link validation
+* Required-route validation
+* Required-metadata validation
+* CNAME validation
+* Check that no private-interview files are tracked
+* Check that no secrets appear in tracked files
+* Check for broken local asset references
+
+Create a lightweight smoke test that:
+
+* Starts the built site locally or previews it.
+* Requests key routes.
+* Confirms HTTP success.
+* Confirms expected page titles.
+* Stops the local process cleanly.
+
+Do not require a heavyweight browser installation for the default path. Browser-level tests may be optional.
+
+Run npm audit and report findings, but do not automatically use npm audit fix --force.
+
+# Git quality
+
+Create:
+
+* A useful README with:
+
+  * project overview
+  * local setup
+  * commands
+  * content editing guide
+  * deployment explanation
+  * custom domain explanation
+  * accessibility notes
+  * privacy notes
+* SECURITY.md explaining:
+
+  * no secrets in repository
+  * how Cloudflare tokens are handled
+  * how to report issues
+* A sensible .gitignore.
+* Clean commit history starting with a meaningful initial commit.
+* No secrets.
+* No local logs.
+* No private interview notes.
+* No node_modules.
+* No generated temporary files.
+
+Do not add an open-source license automatically. Leave the repository without a license unless I explicitly choose one.
+
+# Private interview-preparation pack
+
+Create a local-only directory:
+
+private-interview/
+
+Add it to .gitignore before creating files in it.
+
+Create the following local-only documents:
+
+* 00-career-narrative.md
+* 01-story-bank.md
+* 02-architecture-deep-dives.md
+* 03-whiteboard-frameworks.md
+* 04-interviewer-questions.md
+* 05-role-and-compensation-positioning.md
+* 06-first-90-days.md
+* 07-metric-verification-checklist.md
+
+These files must never be committed.
+
+## Career narrative
+
+Create:
+
+* A 30-second introduction.
+* A 90-second “Tell me about yourself” answer.
+* A 3-minute career walkthrough.
+* A “Why principal architect?” answer.
+* A “Why not engineering management?” answer.
+* A “Why are you looking?” answer that is positive and does not discuss overemployment.
+* A “Why this company?” template.
+* A “What are you looking for next?” answer.
+* A remote-work and occasional-travel positioning answer.
+
+Use this core narrative:
+
+I am a principal-level software architect with a hands-on .NET, Azure, SaaS, integration, and modernization background. My recent work has focused on helping a healthcare SaaS company scale after acquisition by making the application estate visible, standardizing client integration architecture, preparing the organization for AI-enabled modernization, and driving .NET modernization across a large portfolio.
+
+Before that, I worked across travel, logistics, retail, and SaaS platforms, including production commerce and payment systems, mobile and web architecture, cloud modernization, monolith decomposition, and client-facing architecture leadership.
+
+The consistent theme is that I help organizations turn complex systems into scalable, governable platforms that engineering teams can evolve safely.
+
+## Story bank
+
+Create detailed STAR/CARL story outlines for at least these situations:
+
+1. Healthcare SaaS enterprise architecture model.
+2. Client integration reference architecture.
+3. AI-ready context-ingestion system.
+4. .NET 10 modernization strategy.
+5. Code-derived architecture diagrams.
+6. Vail Resorts payment/refund/cancellation workflows.
+7. Vail legacy .NET modernization.
+8. Werner monolith decomposition and strangler patterns.
+9. IBM retail installation reduction from months to one hour.
+10. Leading and influencing across 15 teams.
+11. Product boundaries versus custom client requests.
+12. A disagreement or architecture challenge.
+13. A failure, mistake, or changed decision.
+14. Handling incomplete information.
+15. Communicating architecture to executives.
+16. Remaining hands-on while operating at principal scope.
+17. Balancing modernization with production stability.
+18. Mentoring engineers and improving adoption.
+
+For every story include:
+
+* Situation
+* Stakes
+* Task
+* Actions
+* Decisions
+* Tradeoffs
+* Result
+* Metric
+* What I learned
+* Principal-level takeaway
+* Likely follow-up questions
+* Facts that still need clarification from me
+
+Do not invent failure stories. For stories where the facts are incomplete, create a guided worksheet rather than making something up.
+
+## Architecture deep dives
+
+Prepare interview-ready deep dives for:
+
+* Enterprise architecture assessment
+* Legacy .NET modernization
+* Service-boundary definition
+* Monolith decomposition
+* Strangler pattern
+* API and integration architecture
+* Event-driven architecture
+* Transactional commerce and payment workflows
+* Client integration reference architectures
+* Architecture governance
+* Code-derived architecture
+* Developer experience
+* AI-enabled SDLC
+* Context ingestion for AI
+* Human review and AI governance
+* Azure and hybrid-cloud modernization
+* CI/CD modernization
+* Production reliability and technical risk
+
+For each deep dive include:
+
+* My framework
+* Questions I ask first
+* Artifacts I create
+* Decision criteria
+* Common failure modes
+* Tradeoffs
+* How I measure adoption
+* How I communicate the result
+* A relevant example from my experience
+
+## Whiteboard frameworks
+
+Create concise, memorable frameworks for answering scenario questions such as:
+
+* “Modernize this 15-year-old .NET estate.”
+* “Design a client integration platform.”
+* “Prepare this company for AI-assisted development.”
+* “Reduce architecture-documentation staleness.”
+* “Decompose this monolith.”
+* “Standardize delivery across 70 clients.”
+* “Improve developer onboarding.”
+* “Create architecture governance without becoming a bottleneck.”
+* “Migrate toward modern .NET without stopping feature delivery.”
+* “Design a reliable payment refund workflow.”
+
+Each framework should begin with clarification questions and cover:
+
+* business outcomes
+* constraints
+* current state
+* system boundaries
+* data
+* integrations
+* security and compliance
+* reliability
+* observability
+* migration
+* delivery
+* governance
+* adoption
+* success metrics
+
+## Questions to ask interviewers
+
+Create thoughtful questions grouped by:
+
+* Role expectations
+* Architecture authority
+* Engineering adoption
+* Business model
+* Product boundaries
+* Modernization maturity
+* AI strategy
+* Technical debt
+* Platform ownership
+* Executive sponsorship
+* Team structure
+* Travel expectations
+* Remote-work expectations
+* Compensation structure
+* Equity quality
+* Success criteria for the first year
+
+Include red-flag interpretations.
+
+## Role and compensation positioning
+
+Create polished answers for:
+
+* Compensation expectations.
+* Base salary versus total compensation.
+* Equity versus cash.
+* Why I am targeting principal-level scope.
+* Why my architecture work has measurable business value.
+* Why my current formal title may not contain “Principal.”
+* How to discuss concurrent client engagements accurately without volunteering unnecessary personal detail.
+* How to discuss TEKsystems as the consulting umbrella for Werner and Vail.
+* How to answer background-check date questions truthfully and concisely.
+
+Do not advise deception.
+
+## First 90 days
+
+Create a first-90-days plan for a Principal Software Architect role covering:
+
+Days 1–30:
+
+* business context
+* stakeholders
+* estate discovery
+* product boundaries
+* current architecture
+* delivery constraints
+* production risk
+* existing standards
+* credibility building
+
+Days 31–60:
+
+* architecture priorities
+* reference patterns
+* modernization sequencing
+* decision records
+* governance
+* pilot selection
+* engineering adoption
+* metrics
+
+Days 61–90:
+
+* deliver a high-value pilot
+* publish a modernization roadmap
+* establish architecture review mechanisms
+* improve a developer workflow
+* create measurable adoption
+* communicate outcomes to executives
+
+## Metric verification checklist
+
+Create a checklist for me to verify before publishing or interviewing with:
+
+* 530 repositories
+* approximately 500 component repositories
+* 40 priority services
+* 83 APIs
+* approximately 2,000 endpoints
+* 11 customer-facing applications
+* 72 clients
+* 15 teams
+* client architecture reduced from one week to hours
+* architecture refresh reduced from annual work to four hours
+* onboarding reduced from two weeks to one day
+* Werner scope of 20 repositories, 20 components, 200 endpoints, and 340 services
+* IBM retail scope of approximately 100,000 stores
+* AppRiver scale of 60,000 companies and 10 million mailboxes
+* AppRiver SecureSurf use across approximately 1,500 companies
+* IBM installation reduction from months to one hour
+
+For each metric create fields for:
+
+* exact definition
+* source
+* whether it is public-safe
+* whether it is exact or approximate
+* whether it describes the entire estate or a subset
+* how I would defend it in an interview
+* whether it should appear on the website
+* whether it should appear only in interviews
+
+# Final execution behavior
+
+Proceed in phases, but do not stop after writing a plan.
+
+1. Inspect the environment.
+2. Summarize any existing relevant files or repositories.
+3. Create the project structure.
+4. Create the website.
+5. Create the PowerShell automation.
+6. Create the local-only interview pack.
+7. Install dependencies safely.
+8. Run formatting, checks, validation, and production build.
+9. Run the PowerShell script in WhatIf mode.
+10. Correct any issues.
+11. If GitHub authentication is needed, initiate the secure interactive flow.
+12. Create or connect the GitHub repository.
+13. Commit and push.
+14. Configure GitHub Pages.
+15. Configure or guide Cloudflare DNS setup.
+16. Verify deployment.
+17. Print a final status report.
+
+The final status report must clearly separate:
+
+* Completed
+* Verified
+* Requires my action
+* Warnings
+* URLs
+* Files created
+* Commands for future updates
+* Metrics I should verify before public publication
+
+Do not claim deployment succeeded unless it was actually verified.
+
+Do not expose credentials.
+
+Do not silently skip failures.
+
+Do not overwrite unrelated files.
+
+Do not publish the private interview-preparation directory.
+
+Begin now by inspecting the current environment and repository state, then proceed with implementation.
