@@ -1,0 +1,57 @@
+---
+const steps = [
+  "Repository change",
+  "Static analysis",
+  "Relationship extraction",
+  "Draft architecture model",
+  "Architect review",
+  "Approved architecture view",
+  "Published documentation",
+];
+---
+
+<figure class="diagram">
+  <svg viewBox="0 0 720 420" role="img" aria-labelledby="code-arch-title code-arch-desc">
+    <title id="code-arch-title">Code-derived architecture workflow</title>
+    <desc id="code-arch-desc">
+      Flow from repository change through static analysis, relationship extraction, draft model,
+      architect review, approved view, and published documentation.
+    </desc>
+    <rect width="720" height="420" fill="#101010" rx="8"></rect>
+    {
+      steps.map((label, i) => {
+        const y = 28 + i * 54;
+        return (
+          <g>
+            <rect
+              x="160"
+              y={y}
+              width="400"
+              height="42"
+              rx="6"
+              fill={i === 4 ? "rgba(110,168,160,0.18)" : "#141414"}
+              stroke="#6ea8a0"
+              stroke-opacity={i === 4 ? "0.8" : "0.4"}
+            />
+            <text
+              x="360"
+              y={y + 26}
+              text-anchor="middle"
+              fill="#e8e8e4"
+              font-family="ui-monospace, monospace"
+              font-size="13"
+            >
+              {label}
+            </text>
+            {i < steps.length - 1 && (
+              <path d={`M 360 ${y + 42} L 360 ${y + 54}`} stroke="#6ea8a0" stroke-width="1.5" />
+            )}
+          </g>
+        );
+      })
+    }
+  </svg>
+  <figcaption class="diagram__caption">
+    Structure is derived from code; intent and correctness remain under architect review.
+  </figcaption>
+</figure>

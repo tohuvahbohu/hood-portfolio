@@ -1,0 +1,57 @@
+---
+import { getExperience } from "../data/experience";
+const entries = getExperience();
+---
+
+<section class="section" id="experience" aria-labelledby="experience-heading">
+  <div class="container">
+    <p class="section-label">Experience</p>
+    <h2 class="section-title" id="experience-heading">Selected experience</h2>
+    <p class="section-lead">
+      An executive timeline of architecture leadership and hands-on modernization — not a full
+      résumé dump.
+    </p>
+    <div class="timeline">
+      {
+        entries.map((entry) => (
+          <article class="timeline-item" data-reveal>
+            <h3>
+              {entry.title}
+              <span class="muted" style="font-weight:400">
+                {" "}
+                — {entry.organization}
+              </span>
+            </h3>
+            <p class="timeline-item__meta">
+              {entry.period}
+              {entry.location ? ` · ${entry.location}` : ""}
+              {entry.isCurrent ? " · Current" : ""}
+            </p>
+            <p>{entry.summary}</p>
+            {entry.selectedScope && (
+              <ul>
+                {entry.selectedScope.map((s) => (
+                  <li>{s}</li>
+                ))}
+              </ul>
+            )}
+            {entry.keyOutcome && (
+              <p>
+                <strong style="color:var(--color-text)">Key outcome:</strong> {entry.keyOutcome}
+              </p>
+            )}
+            {entry.clients?.map((client) => (
+              <div class="client-block">
+                <h4>{client.name}</h4>
+                <p style="margin:0">{client.summary}</p>
+              </div>
+            ))}
+          </article>
+        ))
+      }
+    </div>
+    <p style="margin-top:2rem">
+      <a class="btn btn-secondary" href="/resume/">View printable résumé</a>
+    </p>
+  </div>
+</section>

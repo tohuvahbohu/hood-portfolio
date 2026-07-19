@@ -1,0 +1,36 @@
+---
+import { profile } from "../data/profile";
+import { primaryNav } from "../data/navigation";
+---
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="site-logo" href="/"
+      >{profile.name.split(" ").slice(0, 2).join(" ")} <span>Architecture</span></a
+    >
+    <button
+      class="nav-toggle"
+      type="button"
+      data-nav-toggle
+      aria-expanded="false"
+      aria-controls="site-nav"
+      aria-label="Open menu"
+    >
+      <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
+        <path fill="currentColor" d="M3 5h14v1.5H3V5zm0 4.25h14v1.5H3v-1.5zM3 13.5h14V15H3v-1.5z"
+        ></path>
+      </svg>
+    </button>
+    <nav id="site-nav" aria-label="Primary">
+      <ul class="nav-list" data-nav-list>
+        {
+          primaryNav.map((item) => (
+            <li>
+              <a href={item.href}>{item.label}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+</header>

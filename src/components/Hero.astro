@@ -1,0 +1,35 @@
+---
+import { profile } from "../data/profile";
+const { hero } = profile;
+---
+
+<section class="hero grid-bg" id="overview" aria-labelledby="hero-heading">
+  <div class="container hero__grid">
+    <div class="hero__content">
+      <p class="eyebrow">{profile.eyebrow}</p>
+      <h1 id="hero-heading">{hero.primaryHeadline}</h1>
+      <p class="hero__support">{hero.supportingCopy}</p>
+      <p class="hero__line">{hero.supportingLine}</p>
+      <div class="hero__actions">
+        <a class="btn btn-primary" href={hero.primaryCta.href}>{hero.primaryCta.label}</a>
+        <a class="btn btn-secondary" href={hero.secondaryCta.href}>{hero.secondaryCta.label}</a>
+        <a class="btn btn-ghost" href={hero.tertiaryCta.href}>{hero.tertiaryCta.label}</a>
+      </div>
+      <ul class="hero__meta">
+        <li>{profile.location}</li>
+        <li>{profile.workMode}</li>
+        <li>{profile.travel}</li>
+        {profile.showAvailability && <li>{profile.availabilityLabel}</li>}
+      </ul>
+    </div>
+    <aside class="metric-card" data-reveal aria-label="Positioning">
+      <p class="section-label">Positioning</p>
+      <p class="metric-card__value" style="font-size:1.25rem;line-height:1.35">
+        {profile.headline}
+      </p>
+      <p class="metric-card__label">
+        Enterprise architecture · SaaS modernization · .NET / Azure · AI-enabled SDLC
+      </p>
+    </aside>
+  </div>
+</section>

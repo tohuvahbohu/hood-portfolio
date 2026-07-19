@@ -1,0 +1,38 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getAllCaseStudies } from "../../data/case-studies";
+
+const studies = getAllCaseStudies();
+---
+
+<BaseLayout
+  title="Architecture Case Studies | Michael Andrew Hood"
+  description="Public-safe architecture case studies spanning healthcare SaaS estate modeling, client integration patterns, AI-ready context ingestion, commerce modernization, and retail deployment transformation."
+  canonicalPath="/work/"
+>
+  <header class="page-header">
+    <div class="container">
+      <p class="eyebrow">Work</p>
+      <h1>Architecture case studies</h1>
+      <p>
+        Selected work that shows how architecture changes decisions, delivery, onboarding, and
+        operating models — without proprietary system detail.
+      </p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container case-card-grid">
+      {
+        studies.map((study) => (
+          <a class="case-card" href={`/work/${study.slug}/`} data-reveal>
+            <span class="case-card__meta">{study.eyebrow}</span>
+            <h3>{study.title}</h3>
+            <p>{study.summary}</p>
+            {study.keyMetric && <span class="case-metric">{study.keyMetric}</span>}
+          </a>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>

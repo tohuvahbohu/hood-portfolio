@@ -1,0 +1,58 @@
+---
+import type { CaseStudy } from "../data/case-studies";
+
+interface Props {
+  study: CaseStudy;
+}
+
+const { study } = Astro.props;
+
+function asParagraphs(value: string | string[]): string[] {
+  return Array.isArray(value) ? value : [value];
+}
+
+const panels = [
+  { heading: "Challenge", body: study.challenge },
+  { heading: "Approach", body: study.approach },
+  { heading: "Decisions & tradeoffs", body: study.principalFraming || study.learned.join(" ") },
+  { heading: "Results", body: study.outcomes },
+];
+---
+
+<section class="sticky-study section" aria-labelledby={`study-${study.slug}`}>
+  <div class="container sticky-study__inner">
+    <aside class="sticky-study__aside">
+      <p class="section-label">{study.eyebrow}</p>
+      <h2
+        class="section-title"
+        id={`study-${study.slug}`}
+        style="font-size:1.75rem;margin-bottom:1rem"
+      >
+        {study.shortTitle}
+      </h2>
+      <p class="muted">{study.summary}</p>
+      {study.keyMetric && <p class="case-metric">{study.keyMetric}</p>}
+      <p style="margin-top:1.25rem">
+        <a href={`/work/${study.slug}/`}>Read full case study</a>
+      </p>
+    </aside>
+    <div class="sticky-study__panels">
+      {
+        panels.map((panel) => (
+          <article class="panel" data-reveal>
+            <h3>{panel.heading}</h3>
+            {Array.isArray(panel.body) ? (
+              <ul>
+                {panel.body.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            ) : (
+              asParagraphs(panel.body).map((p) => <p>{p}</p>)
+            )}
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

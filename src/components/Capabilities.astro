@@ -1,0 +1,28 @@
+---
+import { capabilities } from "../data/capabilities";
+---
+
+<section class="section" id="capabilities" aria-labelledby="capabilities-heading">
+  <div class="container">
+    <p class="section-label">Capabilities</p>
+    <h2 class="section-title" id="capabilities-heading">Where I create leverage</h2>
+    <p class="section-lead">
+      Enterprise visibility, SaaS integration productization, .NET/cloud modernization, AI-enabled
+      SDLC foundations, and production-grounded systems work.
+    </p>
+    <div class="capability-grid">
+      {
+        capabilities.map((group) => (
+          <article class="capability-card" data-reveal>
+            <h3>{group.title}</h3>
+            <ul>
+              {group.items.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

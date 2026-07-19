@@ -1,0 +1,36 @@
+# build output
+dist/
+.astro/
+
+# dependencies
+node_modules/
+
+# logs
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# environment / secrets
+.env
+.env.*
+!.env.example
+
+# OS / IDE
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# private interview materials — never publish
+private-interview/
+
+# local backups
+*.bak
+*.backup
+backups/
+
+# temporary
+tmp/
+temp/

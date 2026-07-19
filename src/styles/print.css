@@ -1,0 +1,99 @@
+/* Print / PDF résumé styles — white page, no chrome */
+@media print {
+  :root {
+    --color-bg: #fff;
+    --color-bg-elevated: #fff;
+    --color-bg-panel: #fff;
+    --color-bg-soft: #fff;
+    --color-border: #ccc;
+    --color-border-strong: #999;
+    --color-text: #111;
+    --color-text-muted: #333;
+    --color-text-faint: #555;
+    --color-accent: #000;
+    --color-accent-soft: transparent;
+    --color-accent-strong: #000;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+    color: #111 !important;
+    font-size: 11pt;
+    line-height: 1.4;
+  }
+
+  .skip-link,
+  .site-header,
+  .site-footer,
+  .resume-actions,
+  .nav-toggle,
+  [data-no-print] {
+    display: none !important;
+  }
+
+  a {
+    color: #111 !important;
+    text-decoration: none !important;
+  }
+
+  .resume-sheet {
+    border: 0 !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    background: #fff !important;
+    box-shadow: none !important;
+  }
+
+  .resume-sheet h1 {
+    font-size: 18pt;
+    color: #000 !important;
+  }
+
+  .resume-sheet .resume-headline {
+    color: #222 !important;
+  }
+
+  .resume-sheet h2 {
+    color: #000 !important;
+    border-bottom-color: #999 !important;
+    margin-top: 12pt;
+    page-break-after: avoid;
+  }
+
+  .resume-job {
+    page-break-inside: avoid;
+    margin-bottom: 10pt;
+  }
+
+  .resume-job h3,
+  .resume-job__meta,
+  .resume-job p,
+  .resume-job li,
+  .resume-contact,
+  .resume-skills li {
+    color: #111 !important;
+  }
+
+  .container,
+  .container-wide {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .section,
+  .page-header {
+    padding: 0 !important;
+    border: 0 !important;
+  }
+
+  body {
+    background: #fff !important;
+  }
+
+  @page {
+    margin: 0.6in;
+  }
+}

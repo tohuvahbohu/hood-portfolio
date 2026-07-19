@@ -1,0 +1,69 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import MetricGrid from "../components/MetricGrid.astro";
+import ArchitectureStatement from "../components/ArchitectureStatement.astro";
+import Capabilities from "../components/Capabilities.astro";
+import StickyCaseStudy from "../components/StickyCaseStudy.astro";
+import ExperienceTimeline from "../components/ExperienceTimeline.astro";
+import ArchitecturePrinciples from "../components/ArchitecturePrinciples.astro";
+import ContactPanel from "../components/ContactPanel.astro";
+import { getStickyCaseStudies, getFeaturedCaseStudies } from "../data/case-studies";
+import { profile } from "../data/profile";
+
+const sticky = getStickyCaseStudies();
+const moreWork = getFeaturedCaseStudies()
+  .filter((c) => !c.sticky)
+  .slice(0, 4);
+---
+
+<BaseLayout
+  title={profile.seo.homeTitle}
+  description={profile.seo.homeDescription}
+  canonicalPath="/"
+>
+  <Hero />
+  <MetricGrid />
+  <ArchitectureStatement />
+  <Capabilities />
+
+  <section class="section" id="work" aria-labelledby="work-heading">
+    <div class="container">
+      <p class="section-label">Work</p>
+      <h2 class="section-title" id="work-heading">Selected architecture case studies</h2>
+      <p class="section-lead">
+        Public-safe stories about estate visibility, client integration productization, AI-ready
+        context, production commerce, and deployment transformation.
+      </p>
+    </div>
+  </section>
+
+  {sticky.map((study) => <StickyCaseStudy study={study} />)}
+
+  <section class="section" aria-labelledby="more-work-heading">
+    <div class="container">
+      <h2 class="section-title" id="more-work-heading" style="font-size:1.75rem">
+        More case studies
+      </h2>
+      <div class="case-card-grid">
+        {
+          moreWork.map((study) => (
+            <a class="case-card" href={`/work/${study.slug}/`} data-reveal>
+              <span class="case-card__meta">{study.eyebrow}</span>
+              <h3>{study.shortTitle}</h3>
+              <p>{study.summary}</p>
+              {study.keyMetric && <span class="case-metric">{study.keyMetric}</span>}
+            </a>
+          ))
+        }
+      </div>
+      <p style="margin-top:2rem">
+        <a class="btn btn-secondary" href="/work/">View all work</a>
+      </p>
+    </div>
+  </section>
+
+  <ExperienceTimeline />
+  <ArchitecturePrinciples />
+  <ContactPanel />
+</BaseLayout>

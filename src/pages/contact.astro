@@ -1,0 +1,54 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { profile, getEmailParts } from "../data/profile";
+
+const emailParts = getEmailParts();
+---
+
+<BaseLayout
+  title="Contact | Michael Andrew Hood"
+  description="Contact Michael Andrew Hood about enterprise architecture, SaaS modernization, .NET platform strategy, and AI-enabled engineering transformation."
+  canonicalPath="/contact/"
+>
+  <header class="page-header">
+    <div class="container">
+      <p class="eyebrow">Contact</p>
+      <h1>{profile.contact.heading}</h1>
+      <p>{profile.contact.body}</p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <div class="contact-panel" data-reveal>
+        <div>
+          <p class="section-label">Direct</p>
+          <p class="muted">
+            Prefer email or LinkedIn. No contact form, tracking, or third-party processors.
+          </p>
+          {
+            profile.showPhone && profile.phone && (
+              <p class="muted" style="margin-top:1rem">
+                Phone: {profile.phone}
+              </p>
+            )
+          }
+        </div>
+        <div class="contact-links">
+          <a
+            class="btn btn-primary"
+            href={`mailto:${profile.email}`}
+            data-email-user={emailParts.user}
+            data-email-domain={emailParts.domain}
+          >
+            Email Michael
+          </a>
+          <a class="btn btn-secondary" href={profile.linkedIn} rel="noopener noreferrer">LinkedIn</a
+          >
+          <a class="btn btn-secondary" href="/resume/">View résumé</a>
+          <a class="btn btn-ghost" href="/work/">Explore case studies</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

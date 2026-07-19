@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Michael Andrew Hood — Principal Software Architect">
+  <rect width="1200" height="630" fill="#050505"/>
+  <rect x="0" y="0" width="1200" height="630" fill="url(#g)" opacity="0.9"/>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a1211"/>
+      <stop offset="100%" stop-color="#050505"/>
+    </linearGradient>
+  </defs>
+  <!-- subtle grid -->
+  <g stroke="#1a1a1a" stroke-width="1">
+    <path d="M0 105 H1200 M0 210 H1200 M0 315 H1200 M0 420 H1200 M0 525 H1200"/>
+    <path d="M150 0 V630 M300 0 V630 M450 0 V630 M600 0 V630 M750 0 V630 M900 0 V630 M1050 0 V630"/>
+  </g>
+  <rect x="72" y="72" width="12" height="12" fill="#6ea8a0"/>
+  <text x="100" y="84" fill="#6ea8a0" font-family="ui-monospace, monospace" font-size="22" dominant-baseline="middle">PRINCIPAL SOFTWARE ARCHITECT</text>
+  <text x="72" y="260" fill="#f2f2f0" font-family="Georgia, serif" font-size="72" font-weight="500">Michael Andrew Hood</text>
+  <text x="72" y="340" fill="#9a9a96" font-family="system-ui, sans-serif" font-size="32">Enterprise architecture · SaaS modernization · .NET / Azure · AI-enabled SDLC</text>
+  <text x="72" y="540" fill="#6b6b67" font-family="ui-monospace, monospace" font-size="22">michaelandrewhood.com</text>
+</svg>

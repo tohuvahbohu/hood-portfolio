@@ -1,0 +1,13 @@
+---
+import { architectureStatement } from "../data/capabilities";
+---
+
+<section class="section statement" aria-labelledby="statement-heading">
+  <div class="container statement__inner">
+    <p class="section-label">Architecture statement</p>
+    <h2 class="section-title" id="statement-heading">{architectureStatement.headline}</h2>
+    <div class="prose">
+      {architectureStatement.paragraphs.map((p) => <p data-reveal>{p}</p>)}
+    </div>
+  </div>
+</section>

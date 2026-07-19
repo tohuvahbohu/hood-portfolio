@@ -1,0 +1,34 @@
+---
+import { profile } from "../data/profile";
+import { footerNav } from "../data/navigation";
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <div>
+      <p>
+        <strong style="color: var(--color-text)">{profile.name}</strong><br />
+        {profile.location} · {profile.workMode}
+      </p>
+      <p style="margin-top: 0.75rem">
+        © {year}
+        {profile.name}. All rights reserved.
+      </p>
+    </div>
+    <nav aria-label="Footer">
+      <ul>
+        {
+          footerNav.map((item) => (
+            <li>
+              <a href={item.href}>{item.label}</a>
+            </li>
+          ))
+        }
+        <li>
+          <a href={profile.linkedIn} rel="noopener noreferrer">LinkedIn</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</footer>

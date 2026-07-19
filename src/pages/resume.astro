@@ -1,0 +1,138 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { profile } from "../data/profile";
+import { getExperience, skills } from "../data/experience";
+import { getHomepageMetrics } from "../data/metrics";
+import "../styles/print.css";
+
+const experience = getExperience();
+const metrics = getHomepageMetrics().slice(0, 6);
+---
+
+<BaseLayout
+  title="Résumé | Michael Andrew Hood"
+  description="Printable résumé for Michael Andrew Hood — Principal Software Architect."
+  canonicalPath="/resume/"
+  bodyClass="resume-page"
+>
+  <header class="page-header" data-no-print>
+    <div class="container">
+      <p class="eyebrow">Résumé</p>
+      <h1>Printable résumé</h1>
+      <p>
+        Executive-format résumé generated from the same centralized experience and metrics data.
+      </p>
+    </div>
+  </header>
+
+  <section class="section" style="padding-top:1.5rem">
+    <div class="container">
+      <div class="resume-actions" data-no-print>
+        {
+          profile.résumé.printEnabled && (
+            <button class="btn btn-primary" type="button" id="print-resume">
+              {profile.résumé.downloadLabel}
+            </button>
+          )
+        }
+        <a class="btn btn-secondary" href="/contact/">Contact</a>
+      </div>
+
+      <article class="resume-sheet" aria-label="Résumé">
+        <h1>{profile.name}</h1>
+        <p class="resume-headline">{profile.headline}</p>
+        <ul class="resume-contact">
+          <li>{profile.location}</li>
+          <li>{profile.workMode}</li>
+          <li>
+            <a href={`mailto:${profile.email}`}>{profile.email}</a>
+          </li>
+          <li>
+            <a href={profile.linkedIn}>LinkedIn</a>
+          </li>
+          <li>{profile.domain}</li>
+        </ul>
+
+        <h2>Summary</h2>
+        {profile.resumeSummary.map((p) => <p>{p}</p>)}
+
+        <h2>Selected outcomes</h2>
+        <ul>
+          {
+            metrics.map((m) => (
+              <li>
+                <strong>{m.value}</strong> — {m.label}
+              </li>
+            ))
+          }
+        </ul>
+
+        <h2>Experience</h2>
+        {
+          experience.map((job) => (
+            <div class="resume-job">
+              <h3>
+                {job.title} — {job.organization}
+              </h3>
+              <p class="resume-job__meta">
+                {job.period}
+                {job.location ? ` · ${job.location}` : ""}
+              </p>
+              <p>{job.summary}</p>
+              {job.selectedScope && (
+                <ul>
+                  {job.selectedScope.map((s) => (
+                    <li>{s}</li>
+                  ))}
+                </ul>
+              )}
+              {job.clients?.map((c) => (
+                <p>
+                  <strong>{c.name}:</strong> {c.summary}
+                </p>
+              ))}
+              {job.keyOutcome && (
+                <p>
+                  <strong>Key outcome:</strong> {job.keyOutcome}
+                </p>
+              )}
+            </div>
+          ))
+        }
+
+        <h2>Core capabilities</h2>
+        <div class="resume-skills">
+          <div>
+            <h3>Architecture</h3>
+            <ul>
+              {skills.architecture.map((s) => <li>{s}</li>)}
+            </ul>
+          </div>
+          <div>
+            <h3>Platforms</h3>
+            <ul>
+              {skills.platforms.map((s) => <li>{s}</li>)}
+            </ul>
+          </div>
+          <div>
+            <h3>Domains</h3>
+            <ul>
+              {skills.domains.map((s) => <li>{s}</li>)}
+            </ul>
+          </div>
+          <div>
+            <h3>AI-enabled SDLC</h3>
+            <ul>
+              {skills.aiEnabledSdlc.map((s) => <li>{s}</li>)}
+            </ul>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <script>
+    const btn = document.getElementById("print-resume");
+    btn?.addEventListener("click", () => window.print());
+  </script>
+</BaseLayout>

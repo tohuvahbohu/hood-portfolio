@@ -1,0 +1,29 @@
+---
+import { principles } from "../data/capabilities";
+---
+
+<section class="section" id="approach" aria-labelledby="approach-heading">
+  <div class="container">
+    <p class="section-label">Approach</p>
+    <h2 class="section-title" id="approach-heading">How I approach architecture</h2>
+    <p class="section-lead">
+      Principles that keep architecture connected to decisions, delivery, product boundaries, and
+      code.
+    </p>
+    <div class="principles">
+      {
+        principles.map((p, i) => (
+          <article class="principle" data-reveal>
+            <span class="principle__index" aria-hidden="true">
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            <div>
+              <h3>{p.title}</h3>
+              <p>{p.body}</p>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

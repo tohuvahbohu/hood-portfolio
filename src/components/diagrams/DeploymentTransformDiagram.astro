@@ -1,0 +1,94 @@
+---
+const before = [
+  "Manual preparation",
+  "Environment coordination",
+  "Installation steps",
+  "Configuration",
+  "Validation",
+  "Delays & rework",
+];
+const after = [
+  "Validated package",
+  "Automated env prep",
+  "Automated installation",
+  "Configuration apply",
+  "Verification",
+  "~1 hour completion",
+];
+---
+
+<figure class="diagram">
+  <svg viewBox="0 0 760 360" role="img" aria-labelledby="deploy-title deploy-desc">
+    <title id="deploy-title">Deployment transformation before and after</title>
+    <desc id="deploy-desc">
+      Before path shows multi-step manual installation with delays. After path shows automated
+      package through verification completing in approximately one hour.
+    </desc>
+    <rect width="760" height="360" fill="#101010" rx="8"></rect>
+    <text x="40" y="36" fill="#c46b6b" font-family="ui-monospace, monospace" font-size="12">
+      BEFORE — months
+    </text>
+    {
+      before.map((label, i) => (
+        <g>
+          <rect
+            x={30 + i * 120}
+            y="55"
+            width="110"
+            height="48"
+            rx="4"
+            fill="#1a1010"
+            stroke="#c46b6b"
+            stroke-opacity="0.5"
+          />
+          <text
+            x={85 + i * 120}
+            y="84"
+            text-anchor="middle"
+            fill="#e8e8e4"
+            font-size="10"
+            font-family="ui-monospace, monospace"
+          >
+            {label}
+          </text>
+        </g>
+      ))
+    }
+    <text x="40" y="160" fill="#6ea8a0" font-family="ui-monospace, monospace" font-size="12">
+      AFTER — approximately one hour
+    </text>
+    {
+      after.map((label, i) => (
+        <g>
+          <rect
+            x={30 + i * 120}
+            y="180"
+            width="110"
+            height="48"
+            rx="4"
+            fill="rgba(110,168,160,0.12)"
+            stroke="#6ea8a0"
+            stroke-opacity="0.55"
+          />
+          <text
+            x={85 + i * 120}
+            y="209"
+            text-anchor="middle"
+            fill="#e8e8e4"
+            font-size="10"
+            font-family="ui-monospace, monospace"
+          >
+            {label}
+          </text>
+        </g>
+      ))
+    }
+    <text x="40" y="290" fill="#9a9a96" font-size="12" font-family="system-ui, sans-serif">
+      Architecture impact on the operating model — not only software structure.
+    </text>
+  </svg>
+  <figcaption class="diagram__caption">
+    Retail installation transformation from multi-month manual process to approximately one-hour
+    automated completion.
+  </figcaption>
+</figure>

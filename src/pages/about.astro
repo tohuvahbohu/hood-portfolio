@@ -1,0 +1,31 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { profile } from "../data/profile";
+---
+
+<BaseLayout
+  title="About | Michael Andrew Hood"
+  description="About Michael Andrew Hood — principal software architect focused on enterprise architecture, modernization, and AI-enabled delivery."
+  canonicalPath="/about/"
+>
+  <header class="page-header">
+    <div class="container">
+      <p class="eyebrow">About</p>
+      <h1>About {profile.name}</h1>
+      <p>{profile.headline}</p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container prose" style="max-width:42rem">
+      {profile.about.paragraphs.map((p) => <p data-reveal>{p}</p>)}
+      <p data-reveal>
+        Based in {profile.location}. {profile.workMode}. {profile.travel}.
+      </p>
+      <p data-reveal style="margin-top:2rem">
+        <a class="btn btn-primary" href="/contact/">Start a conversation</a>
+        <a class="btn btn-secondary" href="/work/" style="margin-left:0.5rem">Explore work</a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>

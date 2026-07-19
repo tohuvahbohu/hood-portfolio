@@ -1,0 +1,29 @@
+---
+import { profile, getEmailParts } from "../data/profile";
+const emailParts = getEmailParts();
+---
+
+<section class="section" id="contact" aria-labelledby="contact-heading">
+  <div class="container">
+    <div class="contact-panel" data-reveal>
+      <div>
+        <p class="section-label">Contact</p>
+        <h2 class="section-title" id="contact-heading">{profile.contact.heading}</h2>
+        <p class="section-lead" style="margin-bottom:0">{profile.contact.body}</p>
+      </div>
+      <div class="contact-links">
+        <a
+          class="btn btn-primary"
+          href={`mailto:${profile.email}`}
+          data-email-user={emailParts.user}
+          data-email-domain={emailParts.domain}
+        >
+          Email {profile.shortName}
+        </a>
+        <a class="btn btn-secondary" href={profile.linkedIn} rel="noopener noreferrer">LinkedIn</a>
+        <a class="btn btn-secondary" href="/resume/">View résumé</a>
+        <a class="btn btn-ghost" href="/work/">Explore case studies</a>
+      </div>
+    </div>
+  </div>
+</section>

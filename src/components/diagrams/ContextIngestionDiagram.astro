@@ -1,0 +1,123 @@
+---
+const inputs = ["Git repos", "Jira", "Confluence", "PDFs", "Documents", "Images", "Diagrams"];
+const pipeline = ["Discovery", "Sync", "Normalize", "Parse", "Metadata", "Organize", "Assess"];
+const outputs = [
+  "Architecture views",
+  "Dependencies",
+  "Modernization backlog",
+  "Onboarding context",
+  "Human-reviewed recommendations",
+];
+---
+
+<figure class="diagram">
+  <svg viewBox="0 0 780 400" role="img" aria-labelledby="ctx-title ctx-desc">
+    <title id="ctx-title">Context-ingestion pipeline</title>
+    <desc id="ctx-desc">
+      Inputs from repositories and delivery systems flow through discovery, synchronization,
+      normalization, parsing, metadata, organization, and assessment, producing architecture views
+      and human-reviewed recommendations.
+    </desc>
+    <rect width="780" height="400" fill="#101010" rx="8"></rect>
+    <text x="40" y="36" fill="#6ea8a0" font-family="ui-monospace, monospace" font-size="12">
+      INPUTS
+    </text>
+    {
+      inputs.map((label, i) => (
+        <g>
+          <rect
+            x={30 + i * 105}
+            y="50"
+            width="95"
+            height="36"
+            rx="4"
+            fill="#141414"
+            stroke="#333"
+          />
+          <text
+            x={77 + i * 105}
+            y="73"
+            text-anchor="middle"
+            fill="#cfcfc8"
+            font-size="10"
+            font-family="ui-monospace, monospace"
+          >
+            {label}
+          </text>
+        </g>
+      ))
+    }
+    <text x="40" y="130" fill="#6ea8a0" font-family="ui-monospace, monospace" font-size="12">
+      PIPELINE
+    </text>
+    {
+      pipeline.map((label, i) => (
+        <g>
+          <rect
+            x={30 + i * 105}
+            y="150"
+            width="95"
+            height="40"
+            rx="4"
+            fill="rgba(110,168,160,0.12)"
+            stroke="#6ea8a0"
+            stroke-opacity="0.5"
+          />
+          <text
+            x={77 + i * 105}
+            y="175"
+            text-anchor="middle"
+            fill="#e8e8e4"
+            font-size="11"
+            font-family="ui-monospace, monospace"
+          >
+            {label}
+          </text>
+          {i < pipeline.length - 1 && (
+            <path d={`M ${125 + i * 105} 170 L ${135 + i * 105} 170`} stroke="#6ea8a0" />
+          )}
+        </g>
+      ))
+    }
+    <text x="40" y="240" fill="#6ea8a0" font-family="ui-monospace, monospace" font-size="12">
+      OUTPUTS
+    </text>
+    {
+      outputs.map((label, i) => (
+        <g>
+          <rect
+            x={30 + (i % 5) * 145}
+            y="260"
+            width="135"
+            height="50"
+            rx="4"
+            fill="#141414"
+            stroke="#333"
+          />
+          <text
+            x={97 + (i % 5) * 145}
+            y="290"
+            text-anchor="middle"
+            fill="#cfcfc8"
+            font-size="10"
+            font-family="ui-monospace, monospace"
+          >
+            {label}
+          </text>
+        </g>
+      ))
+    }
+    <text
+      x="40"
+      y="360"
+      fill="#9a9a96"
+      font-size="11"
+      font-family="ui-sans-serif, system-ui, sans-serif"
+    >
+      Foundation for AI-enabled modernization — human review remains the authority for intent.
+    </text>
+  </svg>
+  <figcaption class="diagram__caption">
+    Context-ingestion pipeline from fragmented sources to human-reviewed architecture outputs.
+  </figcaption>
+</figure>

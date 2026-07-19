@@ -1,0 +1,162 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import type { CaseStudy } from "../data/case-studies";
+import LayeredEstateDiagram from "../components/diagrams/LayeredEstateDiagram.astro";
+import ClientIntegrationDiagram from "../components/diagrams/ClientIntegrationDiagram.astro";
+import ContextIngestionDiagram from "../components/diagrams/ContextIngestionDiagram.astro";
+import CodeDerivedArchitectureDiagram from "../components/diagrams/CodeDerivedArchitectureDiagram.astro";
+import CommerceFlowDiagram from "../components/diagrams/CommerceFlowDiagram.astro";
+import DeploymentTransformDiagram from "../components/diagrams/DeploymentTransformDiagram.astro";
+
+interface Props {
+  study: CaseStudy;
+}
+
+const { study } = Astro.props;
+const description = study.summary;
+const title = `${study.shortTitle} | Michael Andrew Hood`;
+
+function asParagraphs(value: string | string[]): string[] {
+  return Array.isArray(value) ? value : [value];
+}
+---
+
+<BaseLayout title={title} description={description} canonicalPath={`/work/${study.slug}/`}>
+  <header class="page-header">
+    <div class="container">
+      <p class="eyebrow">{study.eyebrow}</p>
+      <h1>{study.title}</h1>
+      <p>{study.summary}</p>
+      {study.keyMetric && <p class="case-metric">{study.keyMetric}</p>}
+      <ul class="tag-list">
+        {study.relatedCapabilities.map((cap) => <li>{cap}</li>)}
+      </ul>
+    </div>
+  </header>
+
+  <article class="section">
+    <div class="container stack-lg">
+      <section data-reveal>
+        <h2 class="section-title" style="font-size:1.5rem">Context</h2>
+        <div class="prose">
+          {asParagraphs(study.context).map((p) => <p>{p}</p>)}
+        </div>
+      </section>
+
+      <section data-reveal>
+        <h2 class="section-title" style="font-size:1.5rem">Challenge</h2>
+        <div class="prose"><p>{study.challenge}</p></div>
+      </section>
+
+      {
+        study.scope && (
+          <section data-reveal>
+            <h2 class="section-title" style="font-size:1.5rem">
+              Scope
+            </h2>
+            <ul>
+              {study.scope.map((item) => (
+                <li class="muted">{item}</li>
+              ))}
+            </ul>
+          </section>
+        )
+      }
+
+      <section data-reveal>
+        <h2 class="section-title" style="font-size:1.5rem">My role</h2>
+        <div class="prose"><p>{study.role}</p></div>
+      </section>
+
+      <section data-reveal>
+        <h2 class="section-title" style="font-size:1.5rem">Approach</h2>
+        <ul>
+          {study.approach.map((item) => <li class="muted">{item}</li>)}
+        </ul>
+      </section>
+
+      {
+        study.decisions && (
+          <section data-reveal>
+            <h2 class="section-title" style="font-size:1.5rem">
+              Key architectural decisions
+            </h2>
+            <ul>
+              {study.decisions.map((item) => (
+                <li class="muted">{item}</li>
+              ))}
+            </ul>
+          </section>
+        )
+      }
+
+      {
+        study.tradeoffs && (
+          <section data-reveal>
+            <h2 class="section-title" style="font-size:1.5rem">
+              Tradeoffs
+            </h2>
+            <ul>
+              {study.tradeoffs.map((item) => (
+                <li class="muted">{item}</li>
+              ))}
+            </ul>
+          </section>
+        )
+      }
+
+      <section data-reveal>
+        <h2 class="section-title" style="font-size:1.5rem">Outcome</h2>
+        <ul>
+          {study.outcomes.map((item) => <li class="muted">{item}</li>)}
+        </ul>
+      </section>
+
+      {
+        study.principalFraming && (
+          <section data-reveal class="metric-note">
+            <p>{study.principalFraming}</p>
+          </section>
+        )
+      }
+
+      <section data-reveal>
+        <h2 class="section-title" style="font-size:1.5rem">What I learned</h2>
+        <ul>
+          {study.learned.map((item) => <li class="muted">{item}</li>)}
+        </ul>
+      </section>
+
+      <section data-reveal aria-labelledby="diagram-heading">
+        <h2 id="diagram-heading" class="section-title" style="font-size:1.5rem">
+          Architecture diagram
+        </h2>
+        {study.diagram === "layered-estate" && <LayeredEstateDiagram />}
+        {study.diagram === "client-integration" && <ClientIntegrationDiagram />}
+        {study.diagram === "context-ingestion" && <ContextIngestionDiagram />}
+        {study.diagram === "code-derived" && <CodeDerivedArchitectureDiagram />}
+        {study.diagram === "commerce-flow" && <CommerceFlowDiagram />}
+        {study.diagram === "deployment-transform" && <DeploymentTransformDiagram />}
+      </section>
+
+      {
+        study.openQuestions && study.openQuestions.length > 0 && (
+          <section data-reveal class="metric-note" data-no-print>
+            <h2 class="section-label">Open questions for refinement</h2>
+            <ul>
+              {study.openQuestions.map((q) => (
+                <li>{q}</li>
+              ))}
+            </ul>
+          </section>
+        )
+      }
+
+      <p>
+        <a href="/work/">← All case studies</a>
+        {" · "}
+        <a href="/contact/">Start a conversation</a>
+      </p>
+    </div>
+  </article>
+</BaseLayout>
