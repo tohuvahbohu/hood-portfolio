@@ -16,16 +16,7 @@ interface Props {
   padding?: number;
 }
 
-const {
-  x,
-  y,
-  width,
-  height,
-  label,
-  fontSize = 11,
-  color = "#e8e8e4",
-  padding = 6,
-} = Astro.props;
+const { x, y, width, height, label, fontSize = 11, color = "#e8e8e4", padding = 6 } = Astro.props;
 
 const foX = x + padding;
 const foY = y + padding;
